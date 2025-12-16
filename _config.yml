@@ -4,7 +4,7 @@
 title: reComputer J30/40 Setup Guide
 description: Getting started and configuring the Seeed Studio reComputer J30/40 for Edge AI deployment.
 baseurl: "" # The subpath of your site, e.g. /blog.
-url: "https://StdentGuide.github.io" # The base hostname & protocol for your site
+url: "https://itshaihong.github.io/StudentGuide" # The base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
