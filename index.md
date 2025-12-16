@@ -1,8 +1,4 @@
----
-title: Guide to Setup reComputer
-layout: default
-permalink: /recomputer-guide/
----
+
 
 # reComputer J30/40 Setup Guide
 
