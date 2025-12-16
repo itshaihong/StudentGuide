@@ -1,11 +1,4 @@
-# index.md
-
----
-title: Getting Started with reComputer J30/40 for Edge AI
-layout: default
----
-
-# 🚀 reComputer J30/40 Setup Guide
+# reComputer J30/40 Setup Guide
 
 This guide walks you through setting up your reComputer J30/40, based on the NVIDIA Jetson platform, to prepare it for deploying Edge AI projects.
 
@@ -24,7 +17,7 @@ Connect the necessary peripherals to power on and operate the device:
 The reComputer comes pre-installed with an Ubuntu system.
 
 * Power on the device and complete the standard Ubuntu system setup (setting username, password, timezone, etc.).
-* **If you are new to Linux and the terminal,** you can familiarize yourself with basic commands and navigation using resources like: [The Linux command line for beginners | Ubuntu](https://ubuntu.com/tutorials/command-line-for-beginners)
+* **If you are new to Linux and the terminal,** you can familiarize yourself with basic commands and navigation using resources like: [The Linux command line for beginners | Ubuntu](https://ubuntu.com/tutorials/command-line-for-beginners).
 
 ## 3. Check and Install Required Packages
 
@@ -54,11 +47,9 @@ Docker simplifies the deployment of complex AI projects by packaging application
 * Once configured, your device is ready to deploy containerized Edge AI projects!
 
 ## 5. Explore Jetson Examples
-The following repository provides pre-built examples for running various AI models and applications on NVIDIA Jetson devices with a single command:
-
-[Seeed-Projects/jetson-examples on GitHub](https://github.com/Seeed-Projects/jetson-examples)
+The following repository provides pre-built examples for running various AI models and applications on NVIDIA Jetson devices with a single command: [Seeed-Projects/jetson-examples on GitHub](https://github.com/Seeed-Projects/jetson-examples).
 
 ## 6. Advanced Performance and Deployment
 If you require faster inference speeds, model tuning, or wish to train your own models:
 
-* Refer to this guide which details optimizing a trained AI model for the NVIDIA Jetson Platform using the high-performance inference engine, TensorRT, and the multi-stream processing framework, [DeepStream SDK: Deploy YOLOv8 with TensorRT and DeepStream SDK | Seeed Studio Wiki](https://wiki.seeedstudio.com/YOLOv8-DeepStream-TRT-Jetson/)
+* Refer to this guide which details optimizing a trained AI model for the NVIDIA Jetson Platform using the high-performance inference engine, TensorRT, and the multi-stream processing framework, [DeepStream SDK: Deploy YOLOv8 with TensorRT and DeepStream SDK | Seeed Studio Wiki](https://wiki.seeedstudio.com/YOLOv8-DeepStream-TRT-Jetson/).
