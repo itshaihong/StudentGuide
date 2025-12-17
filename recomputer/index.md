@@ -6,7 +6,7 @@ nav_order: 2
 
 # reComputer J30/40 Setup Guide
 
-This guide walks you through setting up your reComputer J30/40, based on the NVIDIA Jetson platform, to prepare it for deploying Edge AI projects.
+This guide walks you through setting up your reComputer J30/40, based on the NVIDIA Jetson platform, to prepare it for deploying Edge AI projects. The content is mainly extracted from [Getting start with reComputer J30/40](https://wiki.seeedstudio.com/reComputer_J30_40_with_Jetson_getting_start/)
 
 ---
 
