@@ -7,9 +7,6 @@ nav_order: 3
 # 🛰️ Guide to Using Satcat.com
 
 {: .important }
-> This page is still under update. Will notify when it's finished!
-
-{: .important }
 > **Disclaimer**
 > *This guide is based on my own experience, including several functions that I use more frequently. But feel free to explore other functionalities following their documentations! However, be cautious that their documentation is not THE MOST DETAILED :P, maybe need some trail and error.
 Maybe you can also keep this document updated so it's a great reference for any other people who want to use it!*
