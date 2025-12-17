@@ -1,15 +1,16 @@
 # _config.yml
 
 # Site Settings
-title: Some Guide and Resources
-baseurl: "" # The subpath of your site, e.g. /blog.
+title: StudentGuide
+description: A collection of user guides by Octupus.
+remote_theme: just-the-docs/just-the-docs
 url: "https://itshaihong.github.io/StudentGuide" # The base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
 
 # Optional: Set a permalink style
 permalink: /:title/
