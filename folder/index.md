@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Coding Standards & Review Checklist
+title: Coding Standards
 nav_order: 3
 ---
 
@@ -17,8 +17,8 @@ These standards are **pragmatic, not rigid**: they reflect how the codebase alre
 
 ### 1.1 Indentation & Layout
 - Use **4 spaces** for indentation. (Tips: You may change it quickly through VS Code)
-![The bottom right corner of VS Code GUI](image.png)
-![Select the "Indent Using Spaces and change"](image-1.png)
+![The bottom right corner of VS Code GUI](indentation-1.png)
+![Select the "Indent Using Spaces and change"](indentation-2.png)
 - **Do not introduce new tabs**.
 - Apply formatting rules only to **new or edited code**, not entire files.
 
@@ -191,10 +191,9 @@ fix: handle timeout in cmd_server receive loop
 
 ## 9. Useful Links
 
-* Project architecture overview
-* Build & toolchain guide
-* Coding examples / templates
-* Debugging & logging guide
+- [Comments](https://se-education.org/guides/conventions/java/basic.html#comments)
+- [Layout](https://se-education.org/guides/conventions/java/basic.html#layout)
+
 
 ---
 
