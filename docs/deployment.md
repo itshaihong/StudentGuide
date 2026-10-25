@@ -71,4 +71,3 @@ scripts, the three original guides, and both image URLs listed above. Live inter
 checks are still required after an owner performs this setting change.
 
 Official reference: [GitHub Pages publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-
