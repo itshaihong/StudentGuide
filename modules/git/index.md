@@ -7,6 +7,7 @@ parent: Learning modules
 course: git
 module_id: git
 status: interactive
+nav_exclude: true
 ---
 
 {% include learning/lab.html %}

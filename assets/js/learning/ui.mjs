@@ -1,17 +1,26 @@
+import {captureDisplays,highlightChanges} from './changes.mjs';
+import {explainTerms} from './terms.mjs';
+
 export const escape = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let checkpointContext='';
+export function setCheckpointContext(text='') { checkpointContext=text; }
 export const button = (id, label, style = 'secondary', disabled = false) => `<button type="button" class="button ${style}" id="${id}" ${disabled ? 'disabled' : ''}>${label}</button>`;
 export const lab = (title, body, reset = true) => `<section class="lab" aria-label="${title}"><div class="lab-toolbar"><h2 class="lab-label">${title}</h2>${reset ? '<button class="toolbar-button" type="button" id="reset-lab">↺ Reset experiment</button>' : '<span class="pill">Synthetic example</span>'}</div><div class="lab-body">${body}</div></section>`;
-export const heading = (title, text) => `<h1 class="lesson-heading" id="lesson-title" tabindex="-1">${title}</h1><p class="lesson-intro">${text}</p>`;
+export const heading = (title, text) => `<h1 class="lesson-heading" id="lesson-title" tabindex="-1">${title}</h1>${checkpointContext?`<p class="checkpoint-context">${escape(checkpointContext)}</p>`:''}<p class="lesson-intro">${text}</p>`;
 export const question = (id, title, answers) => `<section class="lesson-card" aria-labelledby="${id}-title"><span class="task-label">Check your thinking</span><h2 id="${id}-title">${title}</h2><div class="choice-grid">${answers.map((text, i) => `<button type="button" class="choice" id="${id}-${i}" data-quiz="${id}" data-answer="${i}"><span class="choice-marker" aria-hidden="true">${String.fromCharCode(65+i)}</span><span>${text}</span></button>`).join('')}</div></section>`;
 
 const drafts = new WeakMap();
 export function clearReflectionDraft(root) { drafts.delete(root); }
 
 export function preserveFocus(root, html) {
+  const priorTitle=root.querySelector('#lesson-title')?.textContent;
+  const before=captureDisplays(root);
   const draft = root.querySelector('#reflection');
   if (draft) drafts.set(root,draft.value);
   const active = root.contains(document.activeElement) ? document.activeElement.id : '';
   root.innerHTML = html;
+  if(priorTitle===root.querySelector('#lesson-title')?.textContent)highlightChanges(root,before);
+  explainTerms(root);
   if (active) {
     const target = document.getElementById(active);
     if (target?.disabled) {

@@ -19,6 +19,8 @@ permalink: /:title/
 # Authoring materials belong in the repository, not in the public site.
 exclude:
   - AGENTS.md
+  - "**/AGENTS.md"
+  - PROJECT_MEMORY.md
   - README.md
   - "**/README.md"
   - docs/

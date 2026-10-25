@@ -1,0 +1,364 @@
+{
+  "version": 2,
+  "topics": [
+    {
+      "id": "git",
+      "title": "Git and GitHub",
+      "url": "/topics/git/",
+      "description": "Own your changes, integrate with teammates, and ship through a reviewed GitHub workflow.",
+      "prerequisite": "Comfort editing a small program. No Git experience required.",
+      "modules": [
+        {
+          "id": "git-solo",
+          "title": "Own a project with Git",
+          "url": "/modules/git/solo/",
+          "prerequisites": [],
+          "story": "You maintain a device-diagnostics repository. Ship a requested LED timing change without losing unrelated work or sharing accidental edits.",
+          "outcome": "Produce a reviewed checkpoint, explain its scope, and choose the right recovery operation.",
+          "lessons": [
+            {
+              "id": "locate",
+              "title": "Put your own project under version control",
+              "controller": "git-solo",
+              "station": 0,
+              "context": "Start with a pristine project folder and record a baseline before reviewing any AI edits.",
+              "terms": [
+                "vcs",
+                "repository",
+                "commit"
+              ]
+            },
+            {
+              "id": "scope",
+              "title": "Review the requested change",
+              "controller": "git",
+              "station": 1,
+              "context": "The timing request should change implementation and test, while preserving the setup instructions.",
+              "terms": [
+                "diff",
+                "staging",
+                "acceptance-criteria"
+              ]
+            },
+            {
+              "id": "snapshot",
+              "title": "Capture the right version",
+              "controller": "git",
+              "station": 2,
+              "context": "A follow-up edit arrives after you have staged the intended change.",
+              "terms": [
+                "staging",
+                "commit"
+              ]
+            },
+            {
+              "id": "checkpoint",
+              "title": "Create and back up a checkpoint",
+              "controller": "git",
+              "station": 3,
+              "context": "Check the intended snapshot and share your experiment branch as a solo maintainer.",
+              "terms": [
+                "branch",
+                "remote",
+                "commit"
+              ]
+            },
+            {
+              "id": "recover",
+              "title": "Recover without losing the wrong work",
+              "controller": "git",
+              "station": 4,
+              "context": "Before another engineer joins, explain exactly which layer each undo operation affects.",
+              "terms": [
+                "head",
+                "revert"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "git-team",
+          "title": "Integrate a teammate’s work",
+          "url": "/modules/git/team/",
+          "prerequisites": [
+            "git-solo"
+          ],
+          "story": "You add a status report while a teammate fixes the sampler. Keep both changes, investigate a conflicting setting, and hand back a tested branch.",
+          "outcome": "Integrate another engineer’s commits without confusing remote state, working files, or a resolved conflict.",
+          "lessons": [
+            {
+              "id": "branches",
+              "title": "Two engineers, one starting point",
+              "controller": "git-team",
+              "station": 0,
+              "context": "Your status-report feature and the teammate’s sampler fix start from the same commit.",
+              "terms": [
+                "branch",
+                "clone",
+                "head"
+              ]
+            },
+            {
+              "id": "fetch",
+              "title": "Learn what changed remotely",
+              "controller": "git-team",
+              "station": 1,
+              "context": "The teammate has pushed a fix; your clone still knows the old remote tip.",
+              "terms": [
+                "fetch",
+                "remote-tracking",
+                "merge"
+              ]
+            },
+            {
+              "id": "conflict",
+              "title": "Resolve the requirement, not just the text",
+              "controller": "git-team",
+              "station": 2,
+              "context": "Both branches edited one interval, but the real requirements concern two different jobs.",
+              "terms": [
+                "merge-conflict",
+                "acceptance-criteria"
+              ]
+            },
+            {
+              "id": "handoff",
+              "title": "Share an integrated result",
+              "controller": "git-team",
+              "station": 3,
+              "context": "A clean file is not enough: check both behaviors and tell the next engineer what changed.",
+              "terms": [
+                "test",
+                "handoff",
+                "pull-request"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "github-ai",
+          "title": "Ship with GitHub and AI",
+          "url": "/modules/git/github-ai/",
+          "prerequisites": [
+            "git-team"
+          ],
+          "story": "The team needs a bounded sample-count setting. Turn the issue into an AI request, inspect the proposal, repair a CI failure, and prepare a reviewable release.",
+          "outcome": "Use GitHub’s project, review, automation, and release surfaces while remaining responsible for AI-generated changes.",
+          "lessons": [
+            {
+              "id": "surfaces",
+              "title": "Find the right place on GitHub",
+              "controller": "github-ai",
+              "station": 0,
+              "context": "Start with an issue, not a vague request to rewrite the repository.",
+              "terms": [
+                "git-vs-github",
+                "issue",
+                "pull-request"
+              ]
+            },
+            {
+              "id": "ai-context",
+              "title": "Give AI a bounded engineering task",
+              "controller": "github-ai",
+              "station": 1,
+              "context": "The requested range is 1 through 10 samples, inclusive; unrelated files and secrets are outside scope.",
+              "terms": [
+                "acceptance-criteria",
+                "ai-context",
+                "diff"
+              ]
+            },
+            {
+              "id": "review",
+              "title": "Review evidence from a new commit",
+              "controller": "github-ai",
+              "station": 2,
+              "context": "The AI proposal passes a weak test but rejects the valid upper boundary.",
+              "terms": [
+                "continuous-integration",
+                "workflow",
+                "review"
+              ]
+            },
+            {
+              "id": "release",
+              "title": "Finish the handoff, not just the chat",
+              "controller": "github-ai",
+              "station": 3,
+              "context": "Review and automation must refer to the current commit before you merge and describe the release.",
+              "terms": [
+                "tag",
+                "release",
+                "handoff"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zynq-7000",
+      "title": "STM32 to Zynq 7000",
+      "url": "/topics/zynq-7000/",
+      "description": "Take over a project, coordinate hardware and software, and deliver something a teammate can reproduce.",
+      "prerequisite": "Basic STM32 editing, compiling, and downloading experience.",
+      "modules": [
+        {
+          "id": "zynq-foundations",
+          "title": "Take over an embedded project",
+          "url": "/modules/zynq-7000/foundations/",
+          "prerequisites": [],
+          "story": "You join the board-diagnostics project with STM32 experience. Identify the execution roles, follow the files, and prepare a source set another engineer can rebuild.",
+          "outcome": "Explain the PS/PL split and the producer, consumer, and ownership of the project’s important artifacts.",
+          "lessons": [
+            {
+              "id": "roles",
+              "title": "Identify software and circuitry",
+              "controller": "zynq-7000",
+              "station": 0,
+              "context": "First establish which changes run as CPU software and which describe hardware.",
+              "terms": [
+                "ps",
+                "pl",
+                "driver"
+              ]
+            },
+            {
+              "id": "files",
+              "title": "Follow each artifact to its reader",
+              "controller": "zynq-7000",
+              "station": 1,
+              "context": "The project tree contains application code, generated support, and hardware handoffs.",
+              "terms": [
+                "xsa",
+                "bsp",
+                "vivado",
+                "vitis"
+              ]
+            },
+            {
+              "id": "sources",
+              "title": "Give the next engineer reproducible sources",
+              "controller": "embedded-team",
+              "station": 0,
+              "context": "The team policy keeps maintained source and settings in Git, with versioned build artifacts supplied separately.",
+              "terms": [
+                "artifact",
+                "reproducible-build",
+                "handoff"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zynq-handoff",
+          "title": "Coordinate a hardware change",
+          "url": "/modules/zynq-7000/handoff/",
+          "prerequisites": [
+            "zynq-foundations"
+          ],
+          "story": "The diagnostics application gains a GPIO status interface. Coordinate a software-only edit, the changed hardware contract, and the matching files loaded for testing.",
+          "outcome": "Repair stale support data and verify that the application, handoff, and loaded hardware belong to the same design.",
+          "lessons": [
+            {
+              "id": "application",
+              "title": "Make the software-only change",
+              "controller": "zynq-7000",
+              "station": 2,
+              "context": "Begin with a new greeting so you can isolate the application build and load path.",
+              "terms": [
+                "elf",
+                "bitstream",
+                "jtag"
+              ]
+            },
+            {
+              "id": "hardware",
+              "title": "Bring in the changed hardware contract",
+              "controller": "zynq-7000",
+              "station": 3,
+              "context": "A teammate changes the software-visible GPIO interface; rebuilding against old support data is insufficient.",
+              "terms": [
+                "xsa",
+                "platform",
+                "bsp"
+              ]
+            },
+            {
+              "id": "loaded",
+              "title": "Load the artifacts you actually built",
+              "controller": "zynq-7000",
+              "station": 4,
+              "context": "The v2 host files are ready, while the illustrated board still holds v1.",
+              "terms": [
+                "bitstream",
+                "jtag",
+                "artifact"
+              ]
+            },
+            {
+              "id": "contract",
+              "title": "Review a teammate’s handoff package",
+              "controller": "embedded-team",
+              "station": 1,
+              "context": "Before accepting the package, compare the hardware revision used by every consumer.",
+              "terms": [
+                "manifest",
+                "handoff",
+                "domain"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zynq-delivery",
+          "title": "Deliver and diagnose a build",
+          "url": "/modules/zynq-7000/delivery/",
+          "prerequisites": [
+            "zynq-handoff"
+          ],
+          "story": "Your integration run succeeds, but the next engineer needs to reproduce it after a power cycle. Investigate failures by layer and prepare a delivery with traceable evidence.",
+          "outcome": "Distinguish run from boot, diagnose the first mismatched layer, and assemble a reproducible teammate handoff.",
+          "lessons": [
+            {
+              "id": "boot",
+              "title": "Check what happens after power-on",
+              "controller": "zynq-7000",
+              "station": 5,
+              "context": "A JTAG-loaded program can differ from the persistent boot setup.",
+              "terms": [
+                "boot",
+                "elf",
+                "jtag"
+              ]
+            },
+            {
+              "id": "diagnosis",
+              "title": "Find the first failing layer",
+              "controller": "embedded-team",
+              "station": 2,
+              "context": "Use observations to distinguish a stale build, an old load, and an old boot setup.",
+              "terms": [
+                "diagnostic-evidence",
+                "artifact"
+              ]
+            },
+            {
+              "id": "delivery",
+              "title": "Prepare a reproducible delivery",
+              "controller": "embedded-team",
+              "station": 3,
+              "context": "A zip named final is not a reproducible handoff; connect sources, artifacts, versions, and observations.",
+              "terms": [
+                "manifest",
+                "reproducible-build",
+                "release"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

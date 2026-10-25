@@ -1,0 +1,19 @@
+{% assign topic = site.data.curriculum.topics | where: 'id', page.topic | first %}
+<section class="topic-intro">
+  <a class="back-link" href="{{ '/modules/' | relative_url }}">← All topics</a>
+  <p class="topic-kicker">Learning path · {{ topic.modules.size }} modules</p>
+  <h1>{{ topic.title }}</h1>
+  <p>{{ topic.description }}</p>
+  <p class="prerequisite"><strong>Start with:</strong> {{ topic.prerequisite }}</p>
+</section>
+<section class="module-list" aria-label="Modules in recommended order">
+  {% for module in topic.modules %}
+  <article class="module-card">
+    <div class="module-order" aria-hidden="true">{{ forloop.index | prepend: '0' }}</div>
+    <div><p class="topic-kicker">Module {{ forloop.index }} · {{ module.lessons.size }} chapters</p><h2><a href="{{ module.url | relative_url }}">{{ module.title }}</a></h2>
+    <p>{{ module.story }}</p><p class="module-outcome"><strong>You’ll be able to:</strong> {{ module.outcome }}</p>
+    {% if module.prerequisites.size > 0 %}<p class="prerequisite">Recommended first: {% for prior in topic.modules %}{% if module.prerequisites contains prior.id %}<a href="{{ prior.url | relative_url }}">{{ prior.title }}</a>{% endif %}{% endfor %}</p>{% endif %}
+    <a class="button primary" href="{{ module.url | relative_url }}">{% if forloop.first %}Start here{% else %}Explore module{% endif %} →</a></div>
+  </article>
+  {% endfor %}
+</section>

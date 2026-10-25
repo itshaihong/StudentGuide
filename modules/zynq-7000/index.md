@@ -7,6 +7,7 @@ parent: Learning modules
 course: zynq-7000
 module_id: zynq-7000
 status: interactive
+nav_exclude: true
 ---
 
 {% include learning/lab.html %}

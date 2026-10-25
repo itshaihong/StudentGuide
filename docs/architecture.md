@@ -4,18 +4,21 @@
 
 Keep Jekyll and Just the Docs, with the repository root as the site source. This
 preserves the existing deployment model and avoids requiring a JavaScript application,
-account system, backend, or new hosting service for the first two pilots.
+account system, backend, or new hosting service for the learning site.
 
 Public content is separated by purpose:
 
-- `modules/<module-id>/index.md` is a learning path. Add reviewed lessons beneath the
-  same directory, with explicit permalinks and the appropriate navigation parent.
+- `topics/<topic-id>/index.md` introduces the prerequisite sequence and module outcomes.
+- `modules/<topic-id>/<module-name>/index.md` hosts an interactive module. Its mapped
+  chapters come from `_data/curriculum.json`; URLs and activity IDs remain stable.
+- The original `modules/git/` and `modules/zynq-7000/` pilots retain their old URLs and
+  hash chapters, with separate compatibility activity records.
 - `guides/<guide-id>/index.md` is reference material. Existing guide bodies remain
   intact; source locations and navigation can change independently of their URLs.
 - `folder/` contains only two legacy images. Their locations are deliberate compatibility
   paths, not the place for new lesson content.
 
-The public hierarchy is Home, Learning modules, and Reference guides. A reference
+The public hierarchy is Learning paths → Topic → Module → Chapter, alongside Reference guides. A reference
 does not become an interactive lesson merely by moving it into a new directory.
 
 ## Authoring and exercise sources
@@ -82,3 +85,26 @@ readability. Hardware steps require separate evidence from the selected board an
 Configuration references: [Jekyll options](https://jekyllrb.com/docs/configuration/options/),
 [Jekyll permalinks](https://jekyllrb.com/docs/permalinks/), and
 [Just the Docs navigation](https://just-the-docs.com/docs/navigation/main/).
+
+
+## V2 runtime ownership
+
+- `_data/curriculum.json` is the only structural curriculum catalog. Jekyll uses it for
+  topic/module pages and embeds it into the learning layout for browser navigation.
+- `_data/terms.json` contains definitions and contextual examples. The runtime explains
+  preferred chapter terms at first use, with an inline fallback when the term appears
+  only inside an interactive artifact or command.
+- `registry.mjs` maps known controller identifiers to lazy imports. The runtime loads
+  the controllers needed by the selected module, rather than all topics at once.
+- `curriculum.mjs` normalizes stable activity IDs and module metadata. V1 index-based
+  activity stays compatible on the original pilot routes; V2 stores stable chapter IDs.
+- `changes.mjs` compares stable `data-state` displays between redraws. Changed markers
+  and outlines persist until the next redraw; short animations respect reduced motion.
+- `terms.mjs` owns definition controls, dismissal, and keyboard behavior. Domain models
+  never read the DOM. Controllers bind actions and render the model's current state.
+- New collaboration controllers live in `git-solo`, `git-team`, `github-ai`, and
+  `embedded-team`; the tested V1 Git/Zynq transitions remain reusable building blocks.
+
+Root and scoped AGENTS files plus `PROJECT_MEMORY.md` are authoring material and are
+excluded from Jekyll output. Maintain the single memory in place and link detailed
+verification records; do not create parallel current-state files.

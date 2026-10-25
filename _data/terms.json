@@ -1,0 +1,387 @@
+{
+  "repository": {
+    "title": "Repository",
+    "match": [
+      "repository",
+      "repo"
+    ],
+    "definition": "A project’s versioned files and Git history. A local repository includes Git’s management data in .git/.",
+    "example": "The diagnostics repository records its source, tests, and deliberate checkpoints."
+  },
+  "clone": {
+    "title": "Clone",
+    "match": [
+      "clone"
+    ],
+    "definition": "A local copy of a repository with its own working files and Git data. Another clone does not share your uncommitted edits.",
+    "example": "Your laptop and a teammate’s laptop can hold different local states."
+  },
+  "working-tree": {
+    "title": "Working tree",
+    "match": [
+      "working files",
+      "working tree",
+      "working directory"
+    ],
+    "definition": "The checked-out files you edit and inspect. Editing them is separate from staging or recording a commit.",
+    "example": "The 250 ms editor version can differ from the earlier staged 500 ms version."
+  },
+  "diff": {
+    "title": "Diff",
+    "match": [
+      "differences",
+      "diff"
+    ],
+    "definition": "A comparison between two versions of content. Always ask which two states the comparison uses.",
+    "example": "git diff compares working changes with the index; git diff --staged compares the index with HEAD."
+  },
+  "staging": {
+    "title": "Staging and the index",
+    "match": [
+      "staged",
+      "staging",
+      "index"
+    ],
+    "definition": "Preparing content for the next commit. Git’s index holds the selected snapshot, rather than continuously following your editor.",
+    "example": "A second edit needs another deliberate add to replace the staged version."
+  },
+  "commit": {
+    "title": "Commit",
+    "match": [
+      "commit",
+      "checkpoint"
+    ],
+    "definition": "A recorded project snapshot linked to history. An ordinary commit records staged content in the local repository.",
+    "example": "A checked timing change becomes a checkpoint another engineer can inspect."
+  },
+  "head": {
+    "title": "HEAD",
+    "match": [
+      "HEAD"
+    ],
+    "definition": "The name for your current checkout position, usually attached to the branch you are working on.",
+    "example": "Here HEAD identifies the baseline used when unstaging a path."
+  },
+  "branch": {
+    "title": "Branch",
+    "match": [
+      "branch"
+    ],
+    "definition": "A movable name for a line of commits. Creating one does not create a separate clone or copy every working file.",
+    "example": "feature/status can advance while main still points to the original commit."
+  },
+  "remote": {
+    "title": "Remote",
+    "match": [
+      "remote"
+    ],
+    "definition": "A named connection to another repository. Push and fetch transfer Git objects and update references; they do not share an editor session.",
+    "example": "origin is the conventional name for the repository you cloned from."
+  },
+  "fetch": {
+    "title": "Fetch",
+    "match": [
+      "fetch"
+    ],
+    "definition": "Bring remote objects and reference updates into your clone without integrating them into your current working branch.",
+    "example": "After fetching, origin/main can advance while feature/status and its working files stay unchanged."
+  },
+  "remote-tracking": {
+    "title": "Remote-tracking reference",
+    "match": [
+      "remote-tracking",
+      "origin/main"
+    ],
+    "definition": "Your clone’s local record of a branch on a remote, updated by operations such as fetch.",
+    "example": "origin/main is not a live view that automatically changes your working files."
+  },
+  "merge": {
+    "title": "Merge",
+    "match": [
+      "merge",
+      "integrate"
+    ],
+    "definition": "Combine histories. A fast-forward can move a branch name; diverged histories may need a merge commit and conflict resolution.",
+    "example": "The status feature and sampler fix have separate parents in the integrated result."
+  },
+  "merge-conflict": {
+    "title": "Merge conflict",
+    "match": [
+      "conflict"
+    ],
+    "definition": "Git cannot automatically reconcile part of the content. The engineer must resolve the intended behavior and then check it.",
+    "example": "Two intervals cannot both occupy one constant when they describe different tasks."
+  },
+  "acceptance-criteria": {
+    "title": "Acceptance criteria",
+    "match": [
+      "acceptance criteria",
+      "requirements"
+    ],
+    "definition": "Observable conditions that define whether a change satisfies the request. They guide implementation, tests, and review.",
+    "example": "Sample count must accept 1 and 10, and reject 0 and 11."
+  },
+  "test": {
+    "title": "Test evidence",
+    "match": [
+      "tests",
+      "test"
+    ],
+    "definition": "A check of specified behavior. Passing it supports only what it actually exercises.",
+    "example": "A test of 5 alone cannot establish that the upper boundary 10 is accepted."
+  },
+  "handoff": {
+    "title": "Engineering handoff",
+    "match": [
+      "handoff"
+    ],
+    "definition": "The context, versioned result, checks, and remaining limits another engineer needs to continue the work.",
+    "example": "Share the commit, intended behavior, test evidence, and any unresolved board assumptions."
+  },
+  "pull-request": {
+    "title": "Pull request",
+    "match": [
+      "pull request",
+      "PR"
+    ],
+    "definition": "A GitHub collaboration record proposing changes from one branch into another, with differences, discussion, review, and checks.",
+    "example": "Opening a PR does not by itself merge your branch."
+  },
+  "git-vs-github": {
+    "title": "Git and GitHub",
+    "match": [
+      "GitHub"
+    ],
+    "definition": "Git manages version history. GitHub hosts repositories and adds collaboration, automation, and project tools around that history.",
+    "example": "You can commit locally without GitHub; a GitHub PR coordinates a proposed integration."
+  },
+  "issue": {
+    "title": "Issue",
+    "match": [
+      "issue"
+    ],
+    "definition": "A GitHub record for a bug, task, question, or requested change. A useful issue explains the problem and expected result.",
+    "example": "The sample-count issue specifies the inclusive range before AI writes a patch."
+  },
+  "ai-context": {
+    "title": "AI task context",
+    "match": [
+      "context",
+      "AI request"
+    ],
+    "definition": "The relevant goal, constraints, source locations, conventions, and checks supplied to an AI assistant. Generated changes still need review.",
+    "example": "Provide the range, relevant validator, existing tests, and a request to avoid unrelated edits."
+  },
+  "continuous-integration": {
+    "title": "Continuous integration",
+    "match": [
+      "CI",
+      "continuous integration"
+    ],
+    "definition": "Automated checks run when a project changes. The result belongs to the revision that was actually tested.",
+    "example": "A green check on an older commit does not verify your new patch."
+  },
+  "workflow": {
+    "title": "GitHub Actions workflow",
+    "match": [
+      "workflow"
+    ],
+    "definition": "A repository-defined automation process triggered by events. Jobs contain steps such as installing dependencies and running tests.",
+    "example": "A pull-request workflow can check the proposed branch in a fresh runner."
+  },
+  "review": {
+    "title": "Code review",
+    "match": [
+      "review"
+    ],
+    "definition": "Evaluating a proposed change against its intent, correctness, maintainability, and evidence. AI review suggestions are inputs, not authority.",
+    "example": "Compare the validator with the inclusive range and inspect the boundary tests."
+  },
+  "release": {
+    "title": "Release",
+    "match": [
+      "release"
+    ],
+    "definition": "A named delivery with a description and, where useful, versioned assets. GitHub releases are associated with tags.",
+    "example": "A release note explains behavior, checks, compatibility, and known limits."
+  },
+  "tag": {
+    "title": "Tag",
+    "match": [
+      "tag"
+    ],
+    "definition": "A Git reference typically used to identify a specific version for a release. It is different from an advancing development branch.",
+    "example": "The delivery record should point to the intended tested commit, not merely latest."
+  },
+  "revert": {
+    "title": "Revert",
+    "match": [
+      "revert"
+    ],
+    "definition": "Create a new commit that reverses an earlier change, preserving the earlier record in history.",
+    "example": "A shared commit can be reversed without erasing its place in the team history."
+  },
+  "ps": {
+    "title": "Processing system",
+    "match": [
+      "PS"
+    ],
+    "definition": "The Zynq subsystem containing CPU cores and fixed peripherals. Its CPU executes your application program.",
+    "example": "A UART application can use PS peripherals without adding a PL circuit."
+  },
+  "pl": {
+    "title": "Programmable logic",
+    "match": [
+      "PL"
+    ],
+    "definition": "Configurable hardware circuitry in the Zynq device. Its configuration is distinct from CPU application code.",
+    "example": "An AXI GPIO peripheral in PL needs a corresponding hardware design and configuration."
+  },
+  "driver": {
+    "title": "Driver",
+    "match": [
+      "driver",
+      "drivers"
+    ],
+    "definition": "Software that uses a hardware interface. Driver code does not create the hardware circuitry it accesses.",
+    "example": "A GPIO driver must correspond to an interface present in the selected design."
+  },
+  "xsa": {
+    "title": "XSA hardware handoff",
+    "match": [
+      "XSA",
+      "design.xsa"
+    ],
+    "definition": "Vivado’s exported hardware information used to create or update software support. Bitstream inclusion depends on export choices.",
+    "example": "A v2 interface needs the v2 handoff rather than a renamed old file."
+  },
+  "platform": {
+    "title": "Classic platform",
+    "match": [
+      "platform"
+    ],
+    "definition": "A Vitis Classic project combining hardware information with software domains and related configuration.",
+    "example": "Updating an XSA requires checking the platform that consumes it."
+  },
+  "domain": {
+    "title": "Software domain",
+    "match": [
+      "domain"
+    ],
+    "definition": "A processor-targeted software environment in the platform, such as a standalone domain with its support configuration.",
+    "example": "This curriculum uses standalone concepts, not a Linux or Unified IDE flow."
+  },
+  "bsp": {
+    "title": "Board support package",
+    "match": [
+      "BSP"
+    ],
+    "definition": "Hardware- and environment-specific support information, libraries, and drivers used by the software. It is not a complete application.",
+    "example": "A BSP built from the old hardware description can preserve old address assumptions."
+  },
+  "elf": {
+    "title": "ELF application artifact",
+    "match": [
+      "ELF",
+      "app.elf"
+    ],
+    "definition": "A compiled and linked program file on the host, consumed by loading or boot tooling. It is distinct from the contents already in CPU memory.",
+    "example": "Rebuilding app.elf does not automatically replace the program running on the board."
+  },
+  "bitstream": {
+    "title": "Bitstream",
+    "match": [
+      "bitstream",
+      "design.bit"
+    ],
+    "definition": "A hardware configuration artifact used to program PL. It is different from the CPU application ELF.",
+    "example": "A software-only string change leaves the example’s hardware bitstream unchanged."
+  },
+  "linker-script": {
+    "title": "Linker script",
+    "match": [
+      "linker script",
+      "lscript.ld"
+    ],
+    "definition": "Configuration that maps program sections to regions in the target memory map. It does not choose host project folders.",
+    "example": "The linker can place application sections into the configured DDR region."
+  },
+  "jtag": {
+    "title": "JTAG load and debug",
+    "match": [
+      "JTAG"
+    ],
+    "definition": "A debug/programming access path used here to illustrate loading artifacts into the target. A debug run does not establish power-on boot behavior.",
+    "example": "A JTAG-loaded v2 program can disappear after power-on loads an older boot setup."
+  },
+  "boot": {
+    "title": "Boot setup",
+    "match": [
+      "boot",
+      "power-on"
+    ],
+    "definition": "The configured process and persistent contents used to initialize the system at startup. Exact components and media depend on the board and design.",
+    "example": "Updating host files or CPU memory does not automatically update boot storage."
+  },
+  "artifact": {
+    "title": "Build artifact",
+    "match": [
+      "artifact",
+      "artifacts"
+    ],
+    "definition": "A produced file or result that another tool or engineer consumes. Its producer, inputs, version, and purpose matter.",
+    "example": "The ELF and bitstream are different artifacts with different consumers."
+  },
+  "reproducible-build": {
+    "title": "Reproducible project setup",
+    "match": [
+      "reproducible",
+      "rebuild"
+    ],
+    "definition": "Enough maintained sources, configuration, dependencies, and version information to recreate and check the result.",
+    "example": "An isolated .xpr or a file named final is not proof that a teammate can rebuild the design."
+  },
+  "manifest": {
+    "title": "Delivery manifest",
+    "match": [
+      "manifest"
+    ],
+    "definition": "A record connecting a delivery to its sources, tool and target assumptions, artifacts, and verification evidence.",
+    "example": "Record hardware and application revisions separately and identify which board observations were actually made."
+  },
+  "diagnostic-evidence": {
+    "title": "Diagnostic evidence",
+    "match": [
+      "observations",
+      "evidence"
+    ],
+    "definition": "Observed facts used to locate the first failing layer before choosing a repair. The observation’s scope and version matter.",
+    "example": "Old output after a power cycle suggests checking boot contents rather than randomly rebuilding everything."
+  },
+  "vcs": {
+    "title": "Version control",
+    "match": [
+      "version control",
+      "VCS"
+    ],
+    "definition": "A system for recording and comparing project versions so changes can be inspected, recovered, and combined. Git is a distributed version-control system.",
+    "example": "Record a known diagnostics baseline before experimenting, then inspect the difference from it."
+  },
+  "vivado": {
+    "title": "Vivado",
+    "match": [
+      "Vivado"
+    ],
+    "definition": "AMD’s hardware-design tools used here to describe, implement, and export the Zynq hardware design. They produce different artifacts from the CPU application build.",
+    "example": "A hardware-interface change produces a new handoff and, when PL changes, an appropriate bitstream."
+  },
+  "vitis": {
+    "title": "Vitis Classic",
+    "match": [
+      "Vitis",
+      "Classic"
+    ],
+    "definition": "The embedded software development environment used for this curriculum’s platform, standalone domain, and application concepts. Classic and Unified IDE flows must not be mixed.",
+    "example": "Classic 2023.2 uses the Classic launch option; the curriculum does not claim a tested physical setup."
+  }
+}

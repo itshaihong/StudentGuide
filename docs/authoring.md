@@ -1,4 +1,11 @@
-# Authoring a learning lesson
+# Authoring a learning chapter
+
+Read `docs/v2/product-rules.md` first. Add chapters within a coherent module use case
+and maintain the authoritative `_data/curriculum.json` entry. Explain important terms
+through `_data/terms.json` and the chapter’s preferred term IDs. Give state displays
+stable `data-state` keys so changed content is emphasized after actions. Preserve
+reduced-motion information and keyboard focus.
+
 
 1. Choose a module and one observable task. Start from `templates/lesson.md`.
    Keep the lesson in internal planning until its explanations and sources are reviewed.

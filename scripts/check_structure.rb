@@ -18,13 +18,13 @@ errors = []
 config = YAML.safe_load(File.read(File.join(root, '_config.yml')))
 internal = %w[docs templates exercises scripts tests]
 excluded = Array(config['exclude']).map { |path| path.sub(%r{/$}, '') }
-(internal + %w[AGENTS.md README.md Gemfile Gemfile.lock]).each do |path|
+(internal + %w[AGENTS.md PROJECT_MEMORY.md README.md Gemfile Gemfile.lock]).each do |path|
   errors << "Missing site exclusion: #{path}" unless excluded.include?(path)
 end
 errors << 'url must contain the origin without the project path' unless config['url'] == 'https://itshaihong.github.io'
 errors << 'baseurl must preserve /StudentGuide' unless config['baseurl'] == '/StudentGuide'
 
-files = ['index.md'] + Dir.chdir(root) { Dir.glob('{guides,modules}/**/*.md') }
+files = ['index.md'] + Dir.chdir(root) { Dir.glob('{guides,modules,topics}/**/*.md') }.reject { |path| %w[AGENTS.md README.md].include?(File.basename(path)) }
 pages = files.map do |path|
   text = File.read(File.join(root, path))
   match = text.match(/\A---\r?\n(.*?)\r?\n---(?:\r?\n|\z)/m)
@@ -67,14 +67,16 @@ end
 pages.group_by { |page| page[:route] }.each do |route, group|
   errors << "Duplicate route #{route}" if group.length > 1
 end
-pages.group_by { |page| [page[:metadata]['parent'], page[:metadata]['nav_order']] }.each_value do |group|
+pages.reject { |page| page[:metadata]['nav_exclude'] }.group_by { |page| [page[:metadata]['parent'], page[:metadata]['nav_order']] }.each_value do |group|
   errors << "Duplicate sibling navigation order: #{group.map { |page| page[:path] }.join(', ')}" if group.length > 1
 end
-pages.group_by { |page| [page[:metadata]['parent'], page[:metadata]['title']] }.each_value do |group|
+pages.reject { |page| page[:metadata]['nav_exclude'] }.group_by { |page| [page[:metadata]['parent'], page[:metadata]['title']] }.each_value do |group|
   errors << "Duplicate sibling navigation title: #{group.map { |page| page[:path] }.join(', ')}" if group.length > 1
 end
 
 expected = %w[/ /folder/ /recomputer/ /satcat/ /guides/ /modules/ /modules/git/ /modules/zynq-7000/]
+curriculum = JSON.parse(File.read(File.join(root, '_data', 'curriculum.json')))
+expected += curriculum['topics'].flat_map { |topic| [topic['url']] + topic['modules'].map { |mod| mod['url'] } }
 (expected - routes).each { |route| errors << "Missing required route: #{route}" }
 
 pages.each do |page|
@@ -135,8 +137,11 @@ if options[:site]
       target = File.join(site, route.sub(%r{\A/}, ''), 'index.html')
       errors << "Missing built page: #{route}" unless File.file?(target)
     end
-    (internal + %w[AGENTS.md README.md Gemfile Gemfile.lock]).each do |path|
+    (internal + %w[AGENTS.md PROJECT_MEMORY.md README.md Gemfile Gemfile.lock]).each do |path|
       errors << "Internal material leaked into build: #{path}" if File.exist?(File.join(site, path))
+    end
+    Dir.glob(File.join(site, '**', 'AGENTS.md')).each do |path|
+      errors << "Scoped instructions leaked into build: #{path}"
     end
     Dir.glob(File.join(site, '**', '*.html')).each do |path|
       relative = path.delete_prefix(site)

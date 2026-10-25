@@ -2,20 +2,27 @@
 
 A GitHub Pages learning site at https://itshaihong.github.io/StudentGuide/.
 Built with Jekyll, a custom learning layout, and Just the Docs for reference guides.
-The repository now has space to plan, build, and check two interactive learning pilots:
-Git workflow and the transition from STM32 to Zynq 7000.
+V2 contains two topics, each with three connected modules and 23 chapters in total.
+The Git path moves from a solo project to team integration, then GitHub and AI-assisted
+review and delivery. The embedded path moves from project ownership to hardware/software
+handoff, then diagnosis and reproducible delivery.
 
-The English interactive labs now include five Git chapters and six Zynq chapters.
-They use original, finite-state browser simulations with explanatory feedback, reset,
-local activity records, and ungraded reflections. No account, terminal, or board is needed.
-The original reference guides and their public URLs remain available.
+Lessons use original finite-state browser models, contextual definitions, targeted
+change highlights, accessible feedback, local activity records, and ungraded reflections.
+The original pilot routes and reference guides remain available.
+
+Current work: the six-module implementation and 36 automated checks are in place;
+actual V2 build and browser verification are in progress. See `PROJECT_MEMORY.md` and
+`docs/v2/` for decisions and acceptance criteria.
 
 ## Find the right place
 
 | Location | Purpose | Published by Jekyll |
 | --- | --- | --- |
 | `index.md` | Learner home page | Yes |
-| `modules/` | English interactive learning paths | Yes |
+| `topics/` | Topic overview, module sequence, and prerequisites | Yes |
+| `modules/` | English interactive modules and compatible original pilots | Yes |
+| `_data/` | Authoritative curriculum and shared contextual definitions | Embedded in pages |
 | `guides/` | Existing reference guides and their navigation page | Yes |
 | `folder/*.png` | Compatibility assets used by the existing coding guide | Yes |
 | `exercises/` | Scenario specifications and synthetic exercise fixtures | No |
@@ -27,7 +34,9 @@ The original reference guides and their public URLs remain available.
 | `scripts/` | Validation and local preview tools | No |
 | `.github/workflows/` | Build and validation workflow | No |
 
-Start with [the project roadmap](docs/roadmap.md) and [the authoring workflow](docs/authoring.md).
+Start with [the project memory](PROJECT_MEMORY.md), [V2 product rules](docs/v2/product-rules.md),
+and [the curriculum](docs/v2/curriculum.md). Use [the authoring workflow](docs/authoring.md)
+for lesson changes.
 [Architecture](docs/architecture.md) explains where future browser code and lesson assets belong.
 [Migration notes](docs/migration.md) map old file locations to new ones.
 The [research record](docs/research/README.md) retains the supplied proposal and its references.
@@ -55,17 +64,18 @@ The build needs the locked gems and access to the remote Just the Docs theme.
 
 ## Learning paths
 
-- **Git workflow:** locate a clone, review and stage changes, inspect an index/working-file
-  mismatch, commit and share on a branch, and choose recovery actions. The final example
-  asks which version a push actually shares.
-- **STM32 to Zynq 7000:** distinguish PS/PL, inspect a file's producer and consumer,
-  rebuild an application, repair stale hardware support, load artifacts, and compare
-  a JTAG run with power-on boot behavior.
+| Topic | Modules in prerequisite order |
+| --- | --- |
+| Git and GitHub | Own a project with Git → Integrate a teammate’s work → Ship with GitHub and AI |
+| STM32 to Zynq 7000 | Take over an embedded project → Coordinate a hardware change → Deliver and diagnose a build |
 
-The labs record activity, not mastery. Reflections are ungraded and stored only in the
-current browser. Course reset affects only StudentGuide's record for that course.
-The Zynq model targets Classic concepts and uses illustrative paths and versions;
-board-specific procedures and physical verification remain separate future work.
+Each module follows an engineering use case and a teammate-ready outcome. The catalog
+in `_data/curriculum.json` owns module identity, routes, order, prerequisites, and chapter
+mapping. `_data/terms.json` owns the definitions. Do not duplicate either catalog in UI code.
+
+The labs record activity, not mastery. Reflections are ungraded and browser-local.
+Zynq models use Classic 2023.2 concepts and illustrative versions; no physical board
+verification or real tool execution is implied.
 
 ## Preview from a checked build
 
