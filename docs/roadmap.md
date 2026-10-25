@@ -44,7 +44,7 @@ See the public module outlines for the observable outcome of each unit.
 
 ## Phase 2 Two browser simulations — implemented
 
-The two pilots run inside the existing Jekyll site. Future refinement should Show intermediate states,
+The two pilots run inside the existing Jekyll site. Future refinement should show intermediate states,
 provide reasons for incorrect choices, allow retry and reset, and use original visual
 material. Use finite-state models with their assumptions visible. Check whether a
 beginner can explain a new variation without hints before increasing scope.

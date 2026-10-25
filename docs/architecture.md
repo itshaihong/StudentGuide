@@ -26,8 +26,8 @@ searchable transcription. `docs/roadmap.md` records adopted scope and open decis
 scenario specifications and, when needed, synthetic files used to construct a lesson.
 These directories are excluded from Jekyll output, including the original Word file.
 
-Scenario JSON files are **design specifications** accompanying the implemented browser runtime
-; neither is a complete Git/Vitis model. They record the task, initial state, intended transitions,
+Scenario JSON files are **design specifications** accompanying the implemented browser runtime;
+neither is a complete Git/Vitis model. They record the task, initial state, intended transitions,
 feedback, reset behavior, and evidence to collect. Do not load an internal specification
 through a public URL: it is intentionally absent from the site build.
 

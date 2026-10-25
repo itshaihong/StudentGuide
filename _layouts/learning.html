@@ -12,7 +12,7 @@
 <body{% if page.course %} data-course="{{ page.course }}"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="StudentGuide home"><span class="brand-mark" aria-hidden="true">sg<span>↗</span></span>StudentGuide<span class="brand-divider">/</span><span class="brand-tag">LEARN BY DOING</span></a>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="StudentGuide home"><span class="brand-mark" aria-hidden="true">[sg]</span>StudentGuide</a>
     <nav aria-label="Main navigation">
       <a href="{{ '/modules/' | relative_url }}"{% if page.course or page.kind == 'catalog' %} aria-current="page"{% endif %}>Learning paths</a>
       <a href="{{ '/guides/' | relative_url }}">Reference guides <span aria-hidden="true">↗</span></a>
@@ -22,6 +22,6 @@
   <main id="main"{% if page.course %} class="course-shell"{% endif %}>
     {{ content }}
   </main>
-  <footer class="site-footer"><span>StudentGuide <span aria-hidden="true">·</span> A little practice. A clearer picture.</span><span>Original interactive lessons · No account needed</span></footer>
+  <footer class="site-footer"><span>StudentGuide · Learn by exploring.</span><span>English interactive lessons · No account needed</span></footer>
 </body>
 </html>

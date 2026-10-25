@@ -25,7 +25,7 @@ function navigation() {
   document.getElementById('chapter-nav').innerHTML = titles.map((title,i) => `<a href="#chapter-${i+1}" class="chapter-link ${completed.has(i) ? 'completed' : ''}" ${i === chapter ? 'aria-current="step"' : ''}><span class="chapter-index">${completed.has(i) ? '✓' : String(i+1).padStart(2,'0')}</span><span>${title}${completed.has(i) ? '<span class="sr-only"> (practiced)</span>' : ''}</span></a>`).join('');
   document.getElementById('course-progress').value = completed.size;
   document.getElementById('progress-label').textContent = `${completed.size} of ${titles.length} chapters practiced${storageAvailable ? '' : ' · session only'}`;
-  document.getElementById('chapter-position').textContent = `CHAPTER ${String(chapter+1).padStart(2,'0')} / ${String(titles.length).padStart(2,'0')}`;
+  document.getElementById('chapter-position').textContent = `Chapter ${chapter+1} of ${titles.length}`;
   document.getElementById('previous-chapter').disabled = chapter === 0;
   const next = document.getElementById('next-chapter');
   next.disabled = chapter === titles.length-1 || !completed.has(chapter);
@@ -58,7 +58,11 @@ function showChapter(focus = false) {
 }
 document.getElementById('previous-chapter').addEventListener('click', () => { if (chapter > 0) location.hash = `chapter-${chapter}`; });
 document.getElementById('next-chapter').addEventListener('click', () => { if (chapter < titles.length-1 && completed.has(chapter)) location.hash = `chapter-${chapter+2}`; });
-window.addEventListener('hashchange', () => showChapter(true));
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#main') return;
+  document.getElementById('course-menu').open = false;
+  showChapter(true);
+});
 document.getElementById('reset-course').addEventListener('click', () => {
   const dialog = document.createElement('dialog');
   dialog.className = 'reset-dialog';
