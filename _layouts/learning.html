@@ -16,12 +16,11 @@
     <nav aria-label="Main navigation">
       <a href="{{ '/modules/' | relative_url }}"{% if page.course or page.kind == 'catalog' %} aria-current="page"{% endif %}>Learning paths</a>
       <a href="{{ '/guides/' | relative_url }}">Reference guides <span aria-hidden="true">↗</span></a>
-      <a class="github-link" href="https://github.com/itshaihong/StudentGuide/tree/codex/interactive-learning" aria-label="View the project on GitHub">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
   <main id="main"{% if page.course %} class="course-shell"{% endif %}>
     {{ content }}
   </main>
-  <footer class="site-footer"><span>StudentGuide · Learn by exploring.</span><span>English interactive lessons · No account needed</span></footer>
+  <footer class="site-footer"><span>StudentGuide · Learn by exploring.</span><a class="source-link" href="https://github.com/itshaihong/StudentGuide/tree/codex/interactive-learning">Source</a></footer>
 </body>
 </html>

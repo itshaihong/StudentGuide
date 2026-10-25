@@ -1,6 +1,7 @@
 # StudentGuide
 
-A Jekyll and Just the Docs site for student learning modules and reference guides.
+A GitHub Pages learning site at https://itshaihong.github.io/StudentGuide/.
+Built with Jekyll, a custom learning layout, and Just the Docs for reference guides.
 The repository now has space to plan, build, and check two interactive learning pilots:
 Git workflow and the transition from STM32 to Zynq 7000.
 
@@ -77,8 +78,9 @@ python3 scripts/serve_preview.py
 ```
 
 Open `http://localhost:4173/StudentGuide/`. The server binds only to this computer and
-serves `_site/`, never the source or local research. GitHub Pages currently builds from
-`main`; this branch does not change that setting or the live site.
+serves `_site/`, never the source or local research. This is a development preview only.
+The published site uses GitHub Pages, with no separate web server or backend. See
+[deployment settings](docs/deployment.md) for the publishing branch and release evidence.
 
 The imported research files remain local and ignored by Git. Only their provenance
 note is part of the remote repository. Public learning content is English only.

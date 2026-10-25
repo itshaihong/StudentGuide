@@ -1,6 +1,9 @@
 # Verification record
 
-Checked on 2026-10-25, Asia/Singapore.
+This is a chronological record. The interactive release evidence below supersedes
+the initial build limitation.
+
+Initial directory reorganization checked on 2026-10-25, Asia/Singapore.
 
 ## Passed locally
 
@@ -89,7 +92,10 @@ removes the previous decorative hero and persistent sidebar.
 
 ### Remaining release checks
 
-The final accessibility refinements (heading hierarchy and keyboard focus after a
-control becomes disabled) require the next checked build. GitHub Pages publication
-and live-site smoke checks are recorded in `deployment.md` when performed. No physical
+The final accessibility candidate passed run `40215024562` at commit `6c2492e`.
+In its actual built output, keyboard Enter activation advanced focus from creating a
+branch to the staged check, and from commit to push. The primary lesson heading is
+level one, the lab and question headings level two, and lab details level three.
+The source link was then moved from the header to a quiet footer link at the user’s
+request. GitHub Pages publication and live smoke checks are recorded in `deployment.md`. No physical
 Zynq board test or real Vitis/Vivado execution is claimed.

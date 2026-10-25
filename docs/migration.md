@@ -28,3 +28,10 @@ interactive exercises.
 Internal research, plans, templates, exercise specifications, and scripts are excluded
 from site output. The added GitHub workflow validates and builds; it has no deployment
 step. No hosting setting, remote branch, or published site was changed by this work.
+
+## Interactive release on 2026-10-26
+
+The two module routes now serve functioning English browser labs rather than outlines.
+The learning home uses a concise custom layout, while original references keep the
+Just the Docs theme. Guide bodies and image URLs remain preserved. Publication uses
+the existing GitHub Pages address; see `deployment.md` for current settings.

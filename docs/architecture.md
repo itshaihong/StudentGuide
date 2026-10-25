@@ -62,9 +62,10 @@ Use the Liquid `relative_url` filter for internal public links. Each content pag
 has an explicit permalink, so moving a Markdown source does not move its public URL.
 
 Keep `/folder/`, `/recomputer/`, `/satcat/`, and the two `/folder/*.png` image URLs.
-See [the migration map](migration.md). The repository's existing hosting settings
-were not changed by this reorganization. The new workflow builds and checks the site;
-it does not deploy it.
+See [the migration map](migration.md). For the interactive release, publish the dedicated branch through GitHub Pages at
+this existing address. Main stays unchanged. GitHub's native branch publishing builds
+and hosts the site; the validation workflow separately tests and builds it.
+See `deployment.md` for settings and release evidence.
 
 ## Validation boundaries
 

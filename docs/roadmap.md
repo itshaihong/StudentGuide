@@ -9,8 +9,9 @@ activity records stored in the browser, and an ungraded reflection. Thirteen aut
 checks cover state behavior, including a real-Git snapshot comparison. Browser and
 build verification results are recorded separately in `verification.md`.
 
-The original guides and image addresses remain reachable. Main and its GitHub Pages
-configuration are unchanged; all new work is on `codex/interactive-learning`.
+The original guides and image addresses remain reachable. Main is unchanged; all new work is on `codex/interactive-learning`. The interactive
+release targets the existing GitHub Pages address; publishing details are in
+`deployment.md`.
 
 The supplied [research proposal](research/README.md) informs this scope. Its prior
 website observations and reference checks have not been repeated in this reorganization.
@@ -40,7 +41,8 @@ The scenario JSON files document the teaching assumptions behind the two labs. U
 The Git roadmap has five units: workspace, differences, checkpoints, branches and
 sharing, and recovery. The Zynq roadmap has seven: STM32 bridge, PS/PL, hardware
 handoff, file locations, minimal PS example, PL connection, and build/run/boot.
-See the public module outlines for the observable outcome of each unit.
+The interactive pilots group these topics into five Git chapters and six conceptual
+Zynq chapters. Board-specific UART and PL GPIO procedures remain future work.
 
 ## Phase 2 Two browser simulations — implemented
 
@@ -59,8 +61,8 @@ Record board, tool versions, XSA export choices, loaded artifacts, and observed 
 
 ## Phase 4 Evaluate additions
 
-Consider local progress storage, offline operation, bilingual terminology, or an
-isolated real Git exercise only after the pilots demonstrate value. Accounts and a
+Browser-local activity storage is implemented. Offline packaging and isolated real
+Git exercises remain optional extensions. Learning content is English only. Accounts and a
 backend are outside the current scope. Defer advanced rebase workflows, Linux drivers,
 PetaLinux, DMA tuning, and a complete software-engineering course.
 
