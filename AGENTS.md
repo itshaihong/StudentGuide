@@ -28,6 +28,12 @@ Git workflow and STM32 to Zynq 7000. The roadmap distinguishes plans from implem
 - Start with finite-state simulations and clear reset behavior. Do not execute arbitrary
   shell commands or require credentials in learner exercises.
 - Support keyboard input, readable feedback, and explanations beyond color alone.
+- Follow the user's design direction: a concise centered reading column, large readable
+  text, quiet navigation, and intuitive inline experiments. Avoid dense small labels,
+  decorative clutter, or a persistent sidebar. Use restrained schematic and workbench
+  details for the requested technology and exploration character.
+- Publish with GitHub Pages at `https://itshaihong.github.io/StudentGuide/`. Runtime
+  behavior is static HTML/CSS/JavaScript; the local preview server is development-only.
 - Preserve unrelated user edits. Do not regenerate `Gemfile.lock` for a directory change.
 
 ## Validation
