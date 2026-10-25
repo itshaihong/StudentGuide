@@ -99,3 +99,13 @@ level one, the lab and question headings level two, and lab details level three.
 The source link was then moved from the header to a quiet footer link at the user’s
 request. GitHub Pages publication and live smoke checks are recorded in `deployment.md`. No physical
 Zynq board test or real Vitis/Vivado execution is claimed.
+
+
+## Final release status
+
+The quieter header/footer candidate `963531e` passed run `40215269661`. The Pages
+source update was attempted through the official API and the native repository UI.
+Both confirm that publishing settings require permissions unavailable to this account.
+The new experience is therefore delivered as a pushed, checked GitHub Pages branch
+with a localhost preview, using the fallback authorized in the goal. `deployment.md`
+records the owner action. Live publication is not claimed.

@@ -82,5 +82,10 @@ serves `_site/`, never the source or local research. This is a development previ
 The published site uses GitHub Pages, with no separate web server or backend. See
 [deployment settings](docs/deployment.md) for the publishing branch and release evidence.
 
+**Release status:** the branch build passes, but publication needs a repository owner
+to change the Pages source from `main` to `codex/interactive-learning`. The available
+account can push code but cannot change repository options. The current GitHub Pages
+site still serves the existing main version.
+
 The imported research files remain local and ignored by Git. Only their provenance
 note is part of the remote repository. Public learning content is English only.
