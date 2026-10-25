@@ -1,0 +1,36 @@
+{
+  "id": "git-commit-scope",
+  "module_id": "git",
+  "status": "design",
+  "task": "Review an AI LED-interval change and submit only the intended changes.",
+  "model_limits": [
+    "Synthetic file states; no real terminal or learner repository is accessed.",
+    "Rebuildable output is excluded by this exercise's policy, not by a universal Git rule.",
+    "The example local-data file contains explicitly fake data."
+  ],
+  "initial_state": {
+    "workspace": "A clearly labelled synthetic clone on the current computer.",
+    "staged": [],
+    "working_changes": [
+      {"path": "src/blink.c", "change": "Intended LED interval update", "include": true},
+      {"path": "tests/blink_test.c", "change": "Corresponding test update", "include": true},
+      {"path": "README.md", "change": "Accidental unrelated deletion", "include": false},
+      {"path": "build/blink.elf", "change": "Rebuildable example output", "include": false},
+      {"path": "local-secret.example.txt", "change": "Explicitly fake local data", "include": false}
+    ]
+  },
+  "steps": [
+    {"id": "locate", "prediction": "Which clone did the AI edit?", "action": "Inspect workspace and status.", "expected_change": "The current clone, branch, and file states become visible.", "feedback": "An edit in one clone does not update another clone."},
+    {"id": "select", "prediction": "Which changes belong to the requested task?", "action": "Inspect differences and select changes to stage.", "expected_change": "The staged view contains only blink.c and its corresponding test change.", "feedback": "Review content and project policy before selecting a file."},
+    {"id": "checkpoint", "prediction": "What will the commit contain?", "action": "Review the staged difference, run the supplied simulated check, and commit.", "expected_change": "A local checkpoint records exactly the reviewed snapshot.", "feedback": "A local commit and sharing to a remote are separate actions."},
+    {"id": "snapshot", "prediction": "Will a further edit change a previously staged snapshot?", "action": "Make another synthetic edit after staging a version of blink.c.", "expected_change": "Working contents change while the staged snapshot remains inspectably unchanged.", "feedback": "Staging captures content at an action, rather than continuously mirroring a file."},
+    {"id": "variation", "prediction": "How should a shared good commit be reversed?", "action": "Choose a recovery strategy and explain the intended result.", "expected_change": "The model shows a new reverse commit while preserving shared history.", "feedback": "Unstaging, discarding an uncommitted edit, and reversing a commit have different effects."}
+  ],
+  "reset": "Restore all synthetic files, staging, local and remote views, and attempt feedback to the initial state.",
+  "evidence": [
+    "Select the intended source and test changes and explain each excluded change.",
+    "Explain a working-versus-staged mismatch in a fresh variation without hints.",
+    "Explain the choice of recovery operation for a shared commit."
+  ],
+  "open_questions": ["Teaching language", "Exact synthetic diff and test feedback before implementation"]
+}

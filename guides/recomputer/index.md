@@ -2,6 +2,8 @@
 layout: default
 title: reComputer Setup Guide
 nav_order: 2
+parent: Reference guides
+permalink: /recomputer/
 ---
 
 # 🚀 reComputer J30/40 Setup Guide

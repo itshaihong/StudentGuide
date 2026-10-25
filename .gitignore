@@ -1,0 +1,26 @@
+# Local system files
+.DS_Store
+Thumbs.db
+
+# Jekyll and Ruby outputs
+/_site/
+/.jekyll-cache/
+/.jekyll-metadata
+/.sass-cache/
+/.bundle/
+/vendor/
+
+# Future browser tooling and local previews
+/node_modules/
+/coverage/
+/playwright-report/
+/test-results/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Supplied research stays local; publish code and the provenance note only.
+/docs/research/*
+!/docs/research/README.md

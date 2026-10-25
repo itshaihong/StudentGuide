@@ -2,9 +2,10 @@
 
 # Site Settings
 title: StudentGuide
-description: A collection of student guides at STAR by itshaihong.
+description: Learning modules and practical reference guides for students at STAR.
 remote_theme: just-the-docs/just-the-docs
-url: "https://itshaihong.github.io/StudentGuide" # The base hostname & protocol for your site
+url: "https://itshaihong.github.io"
+baseurl: "/StudentGuide"
 
 # Build settings
 markdown: kramdown
@@ -14,6 +15,25 @@ plugins:
 
 # Optional: Set a permalink style
 permalink: /:title/
+
+# Authoring materials belong in the repository, not in the public site.
+exclude:
+  - AGENTS.md
+  - README.md
+  - "**/README.md"
+  - docs/
+  - templates/
+  - exercises/
+  - scripts/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+
+strict_front_matter: true
 
 # Back to top link
 back_to_top: true

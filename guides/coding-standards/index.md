@@ -1,10 +1,12 @@
 ---
 layout: default
-title: Coding Standards
+title: Coding Standards & Git conventions
 nav_order: 3
+parent: Reference guides
+permalink: /folder/
 ---
 
-# 🧭 Coding Standards
+# 🧭 Coding Standards & Git conventions
 
 This guide introduces the **core coding standards** used in our project.
 It is written for **new contributors and students**, with the goal of improving **readability, consistency, and maintainability** while keeping the learning curve low.
@@ -154,7 +156,26 @@ In `.c` files:
 
 Clear commit messages make collaboration and code review much easier.
 
-### 8.1 Commit Message Format
+### 8.1 General Rules
+
+* Use the **imperative mood** (“Add”, not “Added”).
+* Capitalize the first letter of the subject line.
+* Do not end the subject line with a period (.).
+* Keep the summary concise (≈50 characters).
+* One commit = one logical change.
+
+(Reference: [https://se-education.org/guides/conventions/git.html](https://se-education.org/guides/conventions/git.html))
+
+### 8.2 Common Commit Types
+
+* `feat:` – new feature
+* `fix:` – bug fix
+* `refactor:` – code change without behavior change
+* `docs:` – documentation only
+* `test:` – adding or updating tests
+* `chore:` – tooling, build, or maintenance work
+
+### 8.3 Commit Message Format
 
 Follow this structure:
 
@@ -169,23 +190,6 @@ Example:
 ```
 fix: handle timeout in cmd_server receive loop
 ```
-
-### 8.2 Common Commit Types
-
-* `feat:` – new feature
-* `fix:` – bug fix
-* `refactor:` – code change without behavior change
-* `docs:` – documentation only
-* `test:` – adding or updating tests
-* `chore:` – tooling, build, or maintenance work
-
-### 8.3 General Rules
-
-* Use the **imperative mood** (“add”, not “added”).
-* Keep the summary concise (≈50 characters).
-* One commit = one logical change.
-
-(Reference: [https://se-education.org/guides/conventions/git.html](https://se-education.org/guides/conventions/git.html))
 
 ---
 

@@ -1,0 +1,25 @@
+name: Validate StudentGuide
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - name: Check source structure
+        run: ruby scripts/check_structure.rb
+      - name: Build site
+        run: bundle exec jekyll build --trace
+      - name: Check built pages and exclusions
+        run: ruby scripts/check_structure.rb --site _site

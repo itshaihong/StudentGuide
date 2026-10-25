@@ -1,7 +1,9 @@
 ---
 layout: default
 title: SatCat User Guide
-nav_order: 3
+nav_order: 4
+parent: Reference guides
+permalink: /satcat/
 ---
 
 # 🛰️ Guide to Using Satcat.com
