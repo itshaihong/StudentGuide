@@ -14,7 +14,7 @@ export function roles(root,api){
       <div class="soc-frame"><p class="soc-label">Zynq device · two cooperating hardware subsystems</p>
         <div class="soc-columns">
           <section class="soc-panel ps-panel" aria-labelledby="ps-heading"><h3 id="ps-heading">PS <span>Processing System</span></h3><p>Fixed CPU cores and peripherals</p>
-            <div class="program-memory" data-state="program-memory"><strong>Application in target memory</strong><p>${s.loaded?'Loaded from the ELF':'No application loaded in this model'}</p><ol class="instruction-list" aria-label="Illustrative program">${['request = 1;','write_control(request);','Pause CPU stepping'].map((line,i)=>`<li class="${s.loaded&&s.pc===i?'instruction-active':''}"><code>${line}</code>${s.loaded&&s.pc===i?'<span>← next</span>':''}</li>`).join('')}</ol></div>
+            <div class="program-memory" data-state="program-memory"><strong>CPU view of program memory</strong><p>${s.loaded?'ELF loaded · memory may be on-chip or external':'No application loaded in this model'}</p><ol class="instruction-list" aria-label="Illustrative program">${['request = 1;','write_control(request);','Pause CPU stepping'].map((line,i)=>`<li class="${s.loaded&&s.pc===i?'instruction-active':''}"><code>${line}</code>${s.loaded&&s.pc===i?'<span>← next</span>':''}</li>`).join('')}</ol></div>
             <div class="cpu-core" data-state="cpu-core"><strong>CPU · Central Processing Unit</strong><p>${!s.loaded?'Waiting for software':s.pc===2?'Paused after the register write':'Paused before the next instruction'}</p><p>Instructions executed: <b>${s.steps}</b> · software request: <b>${s.request}</b></p></div>
             ${button('step-cpu','3. Step CPU instruction','primary',!s.loaded||s.pc===2)}
           </section>
@@ -23,7 +23,7 @@ export function roles(root,api){
             <div class="logic-circuit" aria-label="Control bit AND external enable produces the output">
               <div class="signal-inputs"><div data-state="control-input">Control <b>${s.configured?s.control:'—'}</b></div><div data-state="enable-input">External enable <b>${s.enable}</b></div></div>
               <div class="gate-symbol" aria-hidden="true"><svg viewBox="0 0 180 120"><path class="circuit-wire" d="M0 30H55 M0 90H55 M135 60H180"/><path class="and-gate" d="M55 10H85 A50 50 0 0 1 85 110H55Z"/></svg><strong>AND</strong></div>
-              <div class="logic-output ${output===1?'signal-high':''}" data-state="logic-output"><span>Output</span><strong>${output===null?'—':output}</strong><span>${output===null?'Unconfigured':output?'High':'Low'}</span></div>
+              <div class="logic-output ${output===1?'signal-high':''}" data-state="logic-output"><span>Output</span><strong>${output===null?'—':output}</strong><span>${output===null?'Inactive':output?'High':'Low'}</span></div>
             </div><p class="logic-equation">Output = control AND enable</p>
             ${button('toggle-enable',`Toggle external enable (now ${s.enable})`)}
           </section>

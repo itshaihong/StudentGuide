@@ -78,20 +78,20 @@
         },
         {
           "id": "git-team",
-          "title": "Integrate a teammate’s work",
+          "title": "Integrate a teammate\u2019s work",
           "url": "/modules/git/team/",
           "prerequisites": [
             "git-solo"
           ],
           "story": "You add a status report while a teammate fixes the sampler. Keep both changes, investigate a conflicting setting, and hand back a tested branch.",
-          "outcome": "Integrate another engineer’s commits without confusing remote state, working files, or a resolved conflict.",
+          "outcome": "Integrate another engineer\u2019s commits without confusing remote state, working files, or a resolved conflict.",
           "lessons": [
             {
               "id": "branches",
               "title": "Two engineers, one starting point",
               "controller": "git-team",
               "station": 0,
-              "context": "Your status-report feature and the teammate’s sampler fix start from the same commit.",
+              "context": "Your status-report feature and the teammate\u2019s sampler fix start from the same commit.",
               "terms": [
                 "branch",
                 "clone",
@@ -143,7 +143,7 @@
             "git-team"
           ],
           "story": "The team needs a bounded sample-count setting. Turn the issue into an AI request, inspect the proposal, repair a CI failure, and prepare a reviewable release.",
-          "outcome": "Use GitHub’s project, review, automation, and release surfaces while remaining responsible for AI-generated changes.",
+          "outcome": "Use GitHub\u2019s project, review, automation, and release surfaces while remaining responsible for AI-generated changes.",
           "lessons": [
             {
               "id": "surfaces",
@@ -210,11 +210,11 @@
           "url": "/modules/zynq-7000/foundations/",
           "prerequisites": [],
           "story": "You join the board-diagnostics project with STM32 experience. Identify the execution roles, follow the files, and prepare a source set another engineer can rebuild.",
-          "outcome": "Explain the PS/PL split and the producer, consumer, and ownership of the project’s important artifacts.",
+          "outcome": "Explain the Processing System (PS) and Programmable Logic (PL) and the producer, consumer, and ownership of the project\u2019s important artifacts.",
           "lessons": [
             {
               "id": "roles",
-              "title": "Identify software and circuitry",
+              "title": "Explore software execution and digital logic",
               "controller": "zynq-7000",
               "station": 0,
               "context": "First establish which changes run as CPU software and which describe hardware.",
@@ -299,7 +299,7 @@
             },
             {
               "id": "contract",
-              "title": "Review a teammate’s handoff package",
+              "title": "Review a teammate\u2019s handoff package",
               "controller": "embedded-team",
               "station": 1,
               "context": "Before accepting the package, compare the hardware revision used by every consumer.",

@@ -464,5 +464,14 @@
     "expansion": "Double Data Rate",
     "definition": "A memory signaling technology; here the term identifies a target memory region.",
     "example": "The linker script selects the program\u2019s target memory placement."
+  },
+  "led": {
+    "title": "Light Emitting Diode",
+    "match": [
+      "LED"
+    ],
+    "expansion": "Light Emitting Diode",
+    "definition": "A semiconductor device that emits light when driven appropriately.",
+    "example": "The diagnostics example changes an indicator\u2019s blink interval."
   }
 }

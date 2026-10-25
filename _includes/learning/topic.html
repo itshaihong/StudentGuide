@@ -4,6 +4,7 @@
   <p class="topic-kicker">Learning path · {{ topic.modules.size }} modules</p>
   <h1>{{ topic.title }}</h1><p>{{ topic.description }}</p>
   <p class="prerequisite"><strong>Start with:</strong> {{ topic.prerequisite }}</p>
+  {% if page.topic == 'git' %}<p class="storage-note">AI — Artificial Intelligence. You remain responsible for its proposed changes.</p>{% endif %}
   <p id="topic-progress" class="storage-note">Choose a chapter below. Practice is saved in this browser.</p>
   <div id="topic-resume" class="resume-panel" hidden><a class="button primary" href="#">Continue learning →</a><p>Return to your last chapter. Experiments restart; your practice marks and saved reflection stay.</p></div>
 </section>

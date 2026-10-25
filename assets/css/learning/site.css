@@ -347,3 +347,6 @@ body[data-topic="zynq-7000"] { --primary: #00728a; --green: var(--primary); --ac
 .drop-zone { border:2px dashed #7094bd; border-radius:8px; padding:18px; margin-top:16px; font-size:16px; background:#edf4ff; }.drop-zone p { margin:0 0 12px; }.drag-over { outline:3px solid #1688c0; background:#d8f5ff !important; }[draggable=true] { cursor:grab; }[draggable=true]:active { cursor:grabbing; }.drag-hint { display:block; font:15px system-ui; color:#53657c; margin-top:10px; }
 @media (max-width:850px) { .soc-columns { grid-template-columns:1fr; }.soc-frame { padding:18px; }.module-heading { grid-template-columns:160px minmax(0,1fr); }.chapter-selection a { grid-template-columns:30px minmax(0,1fr); }.chapter-status { grid-column:2; } }
 @media (max-width:600px) { .build-lanes { grid-template-columns:1fr; }.soc-frame { padding:14px; }.soc-panel { padding:16px; }.module-heading { grid-template-columns:1fr; }.module-cover { max-height:220px; object-fit:cover; }.chapter-module { padding:20px; }.logic-circuit { grid-template-columns:minmax(0,1fr) 76px 60px; }.soc-panel .button { width:100%; } }
+
+.file-button { position:relative; padding-right:30px; }
+.drag-handle { position:absolute; right:8px; top:11px; color:#627a96; font:22px system-ui; }
