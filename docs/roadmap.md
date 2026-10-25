@@ -6,11 +6,12 @@ V2 implements two topics with three modules each, following the sequence in
 `_data/curriculum.json` and `docs/v2/curriculum.md`. The durable product rules are in
 `docs/v2/product-rules.md`, and the single current project memory is `PROJECT_MEMORY.md`.
 
-The six modules, 23 mapped chapters, contextual definitions, and change-emphasis runtime
-are implemented in source. Thirty-six automated checks pass locally. Actual V2 Jekyll
-build and desktop/mobile browser verification are the next release gates.
+The six modules, 23 mapped chapters, contextual definitions, chapter selection and
+resume, drag/drop and editable experiments, original covers, and interactive PS/PL
+diagram are implemented. Forty-one automated checks and the Jekyll build pass. All
+six modules have browser walkthrough evidence, with phone and reduced-motion spot
+checks recorded in `docs/v2/verification.md`. The checked preview is ready.
 
-After those gates pass, record the actual evidence and deliver the checked preview.
 Publishing at the existing GitHub Pages address still requires an owner to change the
 source setting, as last verified in `docs/deployment.md`. Main remains untouched.
 

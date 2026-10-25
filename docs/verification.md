@@ -1,5 +1,7 @@
 # Verification record
 
+For the completed six-module V2 checks, see [V2 verification](v2/verification.md).
+
 This is a chronological record. The interactive release evidence below supersedes
 the initial build limitation.
 

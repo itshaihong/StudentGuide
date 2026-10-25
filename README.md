@@ -11,9 +11,11 @@ Lessons use original finite-state browser models, contextual definitions, target
 change highlights, accessible feedback, local activity records, and ungraded reflections.
 The original pilot routes and reference guides remain available.
 
-Current work: the six-module implementation and 36 automated checks are in place;
-actual V2 build and browser verification are in progress. See `PROJECT_MEMORY.md` and
-`docs/v2/` for decisions and acceptance criteria.
+V2 has passed 41 automated checks, a GitHub Actions Jekyll build, and browser
+walkthroughs of all six modules. Chapter selection, local resume, drag/drop, editable
+inputs, and the interactive PS/PL diagram are included. See `docs/v2/verification.md`
+for scope and limits. Publication still requires the owner’s Pages source change;
+the checked feature branch and local preview are ready.
 
 ## Find the right place
 

@@ -32,6 +32,13 @@ reduced-motion information and keyboard focus.
 - Buttons and choices work with a keyboard, focus is visible, and feedback is readable
   without relying only on color. Interactive feedback is announced accessibly.
 - The layout remains usable on a narrow screen and at increased text size.
+- Full abbreviation names are visible nearby. A closed definition or details panel
+  does not count as a visible expansion.
+- Drag/drop has equivalent buttons or keyboard controls. Staging copies a snapshot
+  rather than visually removing a working file. Editable values expose meaningful
+  behavior, use labelled fields, and reject values outside the exercise contract.
+- Topic links open grouped chapter selection. Stable-ID practice and last-location
+  records survive reopening; resetting one module does not erase another’s progress.
 - Completion records an activity. Understanding requires an explanation and an independent variation.
 
 ## Git pilot review

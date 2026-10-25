@@ -26,23 +26,26 @@ change; keep detailed evidence in the linked documents.
 
 ## Current state
 
-V1 is committed and pushed through `2235359`. It has two independent pilot labs,
-five Git chapters and six Zynq chapters. V2 is in progress: all six modules and 23 mapped chapters are implemented in source.
-Its durable rules live in `docs/v2/`; `_data/curriculum.json` and `_data/terms.json` own
-the structure and definitions. Forty automated checks pass. The actual V2 build
-and browser release gates remain pending; do not infer them from source tests.
+V2 is implemented on `codex/interactive-learning`: two topics, six coherent modules,
+23 chapters, and 41 passing automated checks. Actual GitHub Actions Jekyll builds
+and built-site validation pass. All six modules have desktop browser walkthroughs;
+phone, keyboard, numeric input, actual native drag/drop, local resume, saved reflection,
+reset, and reduced-motion checks are recorded in `docs/v2/verification.md`.
 
-The first V2 implementation must include all six coherent modules, contextual
-definitions, visible state transitions, navigation/prerequisites, model checks,
-build checks, and browser walkthroughs. Do not call the work complete after a
-visual refresh or a plan alone.
+The topic page opens chapter selection grouped by module. Practice and last-chapter
+IDs persist in browser-local storage; experiment state restarts. Git staging and
+source classification support drag/drop and direct buttons. Inputs let learners
+change the working interval and probe a proposed validator. Abbreviation full names
+are visible beside the task; definitions provide optional extra context.
 
-The first V2 source commit `38fbde2` passed its GitHub Actions Jekyll build.
-Further source now implements drag/drop staging and classification with button alternatives,
-editable Git intervals and validator probes, topic chapter selection with stable-ID resume,
-six generated module covers, visible acronym expansions, and an interactive PS/PL diagram.
-The diagram distinguishes fixed PS hardware executing software from configured PL digital
-logic. Its CPU/register/input model is tested; actual browser release verification remains pending.
+The PS/PL diagram shows separate application and bitstream paths, CPU instructions,
+a memory-mapped control register, and configured digital logic responding to an
+external input while CPU stepping is paused. Both PS and PL are hardware. Six original
+module covers are in use; the foundations cover depicts one shared chip package.
+
+The runtime was verified through `1749fa3` after the first V2 implementation at
+`38fbde2`. The checked preview is ready; it is not yet the live Pages site. Detailed
+evidence and image provenance are linked below. Maintain this memory in place.
 
 ## Architecture and evidence
 
@@ -52,7 +55,8 @@ logic. Its CPU/register/input model is tested; actual browser release verificati
 - Zynq teaching boundary: Classic 2023.2, standalone concepts. No board has been selected
   or physically tested. Board procedures require separate primary-source verification.
 - Imported Word research and its transcription stay local and ignored by Git.
-- V1 verification: `docs/verification.md`; publication details: `docs/deployment.md`.
+- V2 verification: `docs/v2/verification.md`; V1 chronology: `docs/verification.md`;
+  publication details: `docs/deployment.md`.
 - Last verified Pages setting on 2026-10-26: main/root, legacy Jekyll publishing.
   API and browser accounts could push but could not change Pages settings. The native
   settings page explicitly denied repository-options access. An owner action is needed

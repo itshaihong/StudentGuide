@@ -18,7 +18,7 @@ concept illustration rather than a factual hardware diagram or screenshot.
 | `assets/images/modules/git-solo.png` | Engineering laptop with abstract code bars, project folder, three chronological snapshot plates. |
 | `assets/images/modules/git-team.png` | Two engineering workstations; distinct commit paths converge at a central integration node. |
 | `assets/images/modules/github-ai.png` | Patch review magnifier, test matrix with an amber boundary case, subordinate assistant node; no robot. |
-| `assets/images/modules/zynq-foundations.png` | Generic conceptual board, CPU-like block beside configurable logic grid and connections; no actual pinout or vendor claims. |
+| `assets/images/modules/zynq-foundations.png` | One unified conceptual chip package containing a CPU region and configurable logic grid, with internal connections; no actual pinout or vendor claims. |
 | `assets/images/modules/zynq-handoff.png` | Generic board and artifact plates; stale handoff replaced by a matching handoff; no actual pinout. |
 | `assets/images/modules/zynq-delivery.png` | Generic test bench, probe, simple oscilloscope trace, conceptual delivery manifest; no physical test claims. |
 
@@ -35,3 +35,9 @@ for the PS/PL device structure and hardware/software separation;
 [AMD UG1400 2023.2: XSA export](https://docs.amd.com/r/2023.2-English/ug1400-vitis-embedded/Creating-a-Hardware-Design-XSA-File)
 for Xilinx Shell Archive terminology. The AND circuit is an original teaching example,
 not an asserted board-specific peripheral or universal PS/PL architecture.
+
+The foundations cover was edited with `image_gen` after visual review: preserve its
+style, board, composition, and artifact plate, but replace two large packages with
+one continuous shared package boundary containing the fixed CPU region and configurable
+logic grid. The corrected image was inspected and replaces the same saved asset.
+This is an editorial cutaway, not a silicon floorplan or a board selection.

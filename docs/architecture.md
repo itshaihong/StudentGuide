@@ -8,7 +8,8 @@ account system, backend, or new hosting service for the learning site.
 
 Public content is separated by purpose:
 
-- `topics/<topic-id>/index.md` introduces the prerequisite sequence and module outcomes.
+- `topics/<topic-id>/index.md` opens chapter selection, grouped by module, with
+  prerequisites, local progress, and a validated last-chapter Continue link.
 - `modules/<topic-id>/<module-name>/index.md` hosts an interactive module. Its mapped
   chapters come from `_data/curriculum.json`; URLs and activity IDs remain stable.
 - The original `modules/git/` and `modules/zynq-7000/` pilots retain their old URLs and
@@ -46,7 +47,7 @@ reserved asset locations are:
 | `assets/js/learning/` | Shared browser behavior such as reset and feedback |
 | `assets/js/modules/<module-id>/` | Small, module-specific state transitions |
 | `assets/css/learning/` | Styles for the learning controls and diagrams |
-| `assets/images/modules/<module-id>/` | Original diagrams and licensed lesson assets |
+| `assets/images/modules/` | Original conceptual module covers; precise diagrams use HTML/SVG |
 | `assets/data/<module-id>/` | Explicitly selected public data for a reviewed lesson |
 
 Do not create a framework or unused asset tree in advance. Keep lesson meaning in
@@ -108,3 +109,17 @@ Configuration references: [Jekyll options](https://jekyllrb.com/docs/configurati
 Root and scoped AGENTS files plus `PROJECT_MEMORY.md` are authoring material and are
 excluded from Jekyll output. Maintain the single memory in place and link detailed
 verification records; do not create parallel current-state files.
+
+- `activity.mjs` validates stable chapter/module IDs for resume links. `course.mjs`
+  owns each module’s completion, saved reflection, and last chapter; `progress.mjs`
+  reads those records on topic pages. V2 activity keys are
+  `studentguide:activity:v2:<module-id>`; topic resume keys are
+  `studentguide:resume:v2:<topic-id>`. Exercises restart on reopening.
+- `drag.mjs` binds native drag/drop to the same domain actions as buttons. Git staging
+  copies content into the index; it does not move the working file. Classification
+  also has direct buttons for keyboard and touch. External drops are not accepted.
+- `terms.mjs` shows abbreviation expansions in visible notes, unless the full name
+  is already visible. Optional definitions add context rather than hiding full names.
+- `zynq-7000/execution-model.mjs` isolates the conceptual CPU/register/AND-circuit
+  model. Its renderer in `roles.mjs` is shared by the retained pilot and V2 foundations.
+- `docs/v2/visual-assets.md` records cover prompts, intended use, and diagram sources.

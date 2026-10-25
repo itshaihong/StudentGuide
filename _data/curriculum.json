@@ -210,7 +210,7 @@
           "url": "/modules/zynq-7000/foundations/",
           "prerequisites": [],
           "story": "You join the board-diagnostics project with STM32 experience. Identify the execution roles, follow the files, and prepare a source set another engineer can rebuild.",
-          "outcome": "Explain the Processing System (PS) and Programmable Logic (PL) and the producer, consumer, and ownership of the project\u2019s important artifacts.",
+          "outcome": "Explain how the Processing System (PS) and Programmable Logic (PL) cooperate, and trace who produces and consumes each important project artifact.",
           "lessons": [
             {
               "id": "roles",
