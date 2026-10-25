@@ -5,7 +5,7 @@ export function changedKeys(before, after) {
 
 function readDisplay(element) {
   const copy=element.cloneNode(true);
-  copy.querySelectorAll('.change-marker').forEach(node=>node.remove());
+  copy.querySelectorAll('.change-marker,.term-definition,.term-references,.term-expansion,.acronym-notes').forEach(node=>node.remove());
   return copy.textContent.replace(/\s+/g,' ').trim();
 }
 export function captureDisplays(root) {

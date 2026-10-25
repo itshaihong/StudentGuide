@@ -4,6 +4,14 @@ export function setTerms(data,ids=[]) { definitions=data; preferred=ids; }
 const regexEscape=value=>value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 
 export function explainTerms(root) {
+  const content=root.textContent;
+  const expansions=Object.values(definitions).filter(term=>term.expansion&&term.match.some(word=>/^[A-Z]{2,}$/.test(word)&&new RegExp(`\\b${word}\\b`).test(content))&&!content.toLowerCase().includes(term.expansion.toLowerCase()));
+  if(expansions.length){
+    const note=document.createElement('p');note.className='acronym-notes';
+    note.append('Abbreviations: ');
+    expansions.forEach((term,i)=>{const span=document.createElement('span');span.textContent=`${term.match.find(word=>/^[A-Z]{2,}$/.test(word))} — ${term.expansion}`;if(i)note.append(' · ');note.append(span);});
+    (root.querySelector('.lesson-intro')||root.firstElementChild).insertAdjacentElement('afterend',note);
+  }
   const missing=[];
   for(const id of preferred) {
     const term=definitions[id];
@@ -13,7 +21,7 @@ export function explainTerms(root) {
     let text;
     let inserted=false;
     while((text=walker.nextNode())) {
-      if(text.parentElement.closest('button,a,code,pre,h1,h2,h3,h4,.terminal,.diff-panel,.term-definition,[role="status"]'))continue;
+      if(text.parentElement.closest('button,a,code,pre,h1,h2,h3,h4,.terminal,.diff-panel,.term-definition,.acronym-notes,[role="status"]'))continue;
       const found=pattern.exec(text.textContent);
       if(!found)continue;
       const button=document.createElement('button');

@@ -14,6 +14,13 @@ change; keep detailed evidence in the linked documents.
   engineering task with prerequisites, decisions, consequences, and a usable outcome.
 - Explain technical terms in context. Highlight what changed after an action and use
   restrained purposeful animation, with an equivalent reduced-motion presentation.
+- Use meaningful drag/drop and editable inputs, with click/keyboard/touch alternatives.
+- A topic opens chapter selection grouped by module, rather than opening a lesson.
+  Keep completed/not-completed state and the last visited chapter in local storage.
+- Show abbreviation full names nearby. PS is fixed hardware running software; PL is
+  configurable hardware implementing digital logic. Use accurate interactive diagrams.
+- Add relevant impressive original illustrations to the learning design. Images must
+  clarify the actual engineering topic and must not imply unverified physical hardware.
 - The learning sequence starts with individual work, then team integration, then
   GitHub and AI-assisted collaboration. Do not substitute a longer list of quizzes.
 
@@ -22,13 +29,20 @@ change; keep detailed evidence in the linked documents.
 V1 is committed and pushed through `2235359`. It has two independent pilot labs,
 five Git chapters and six Zynq chapters. V2 is in progress: all six modules and 23 mapped chapters are implemented in source.
 Its durable rules live in `docs/v2/`; `_data/curriculum.json` and `_data/terms.json` own
-the structure and definitions. Thirty-six automated checks pass. The actual V2 build
+the structure and definitions. Forty automated checks pass. The actual V2 build
 and browser release gates remain pending; do not infer them from source tests.
 
 The first V2 implementation must include all six coherent modules, contextual
 definitions, visible state transitions, navigation/prerequisites, model checks,
 build checks, and browser walkthroughs. Do not call the work complete after a
 visual refresh or a plan alone.
+
+The first V2 source commit `38fbde2` passed its GitHub Actions Jekyll build.
+Further source now implements drag/drop staging and classification with button alternatives,
+editable Git intervals and validator probes, topic chapter selection with stable-ID resume,
+six generated module covers, visible acronym expansions, and an interactive PS/PL diagram.
+The diagram distinguishes fixed PS hardware executing software from configured PL digital
+logic. Its CPU/register/input model is tested; actual browser release verification remains pending.
 
 ## Architecture and evidence
 

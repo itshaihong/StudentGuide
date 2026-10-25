@@ -8,12 +8,13 @@
   <div class="path-grid">
   {% for topic in site.data.curriculum.topics %}
     <a class="path-card topic-{{ topic.id }}" href="{{ topic.url | relative_url }}">
-      <div class="path-diagram" aria-hidden="true">{% if topic.id == 'git' %}<span>Solo project</span><b>→</b><span>Team workflow</span><b>→</b><span class="active-node">GitHub + AI</span>{% else %}<span>Understand</span><b>→</b><span>Integrate</span><b>→</b><span class="active-node">Deliver</span>{% endif %}</div>
+      <img class="topic-cover" src="{{ '/assets/images/modules/' | append: topic.modules.first.id | append: '.png' | relative_url }}" alt="" width="1536" height="1024">
+
       <h3>{{ topic.title }}</h3><p>{{ topic.description }}</p>
-      <div class="card-bottom"><span>{{ topic.modules.size }} connected modules</span><strong>Explore the path →</strong></div>
+      <div class="card-bottom"><span>{{ topic.modules.size }} connected modules</span><strong>Choose a chapter →</strong></div>
     </a>
   {% endfor %}
   </div>
-  <p class="catalog-note">Start with the first module. Definitions are available where you need them, and changes light up as you experiment.</p>
+  <p class="catalog-note">Start with the first module. Definitions sit beside the task, and changes light up as you experiment. AI means Artificial Intelligence.</p>
 </section>
 <section class="reference-strip"><h2>Reference guides</h2><p>The original guides remain available at their existing links.</p><div class="reference-links"><a href="{{ '/recomputer/' | relative_url }}">reComputer setup</a><a href="{{ '/folder/' | relative_url }}">Coding standards & Git</a><a href="{{ '/satcat/' | relative_url }}">Satcat</a></div></section>

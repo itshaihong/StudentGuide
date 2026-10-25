@@ -1,5 +1,5 @@
 import {heading,lab,button,question,bindQuiz,preserveFocus,reflection,escape} from '../../learning/ui.mjs';
-import {promptParts,checkPrompt,createReview,reviewAction,preparedReview,reviewReady} from './model.mjs';
+import {promptParts,checkPrompt,createReview,reviewAction,preparedReview,reviewReady,acceptsCount} from './model.mjs';
 
 export function mount(chapter,root,api){
   if(chapter===0)return surfaces(root,api);
@@ -51,11 +51,12 @@ function context(root,api){
 function evidenceCards(s){return `<div class="state-grid"><div class="state-card" data-state="review-head"><h3>Proposed revision</h3><strong>r${s.revision}</strong><p>Inclusive upper boundary: ${s.inclusive?'yes':'no'}</p></div><div class="state-card ${s.ci?.revision===s.revision&&s.ci.ok?'current':'stale'}" data-state="ci-result"><h3>Automated checks</h3><strong>${s.ci?s.ci.ok?'Pass':'Fail':'—'}</strong><p>${s.ci?`Tested r${s.ci.revision}${s.ci.revision!==s.revision?' · old revision':''}`:'Not run'}<br>${s.boundaries?'Boundary cases included':'Only the middle example'}</p></div><div class="state-card" data-state="review-approval"><h3>Review</h3><strong>${s.reviewed?`r${s.reviewed}`:'—'}</strong><p>${s.reviewed===s.revision?'Current proposal reviewed':'Current proposal still needs review'}</p></div></div>`;}
 function checksOutput(s){return s.ci?s.ci.cases.map(c=>`${c.expected===c.actual?'PASS':'FAIL'}  count=${c.value}  expected ${c.expected} / got ${c.actual}`).join('\n'):'Run the supplied checks to inspect their actual coverage.';}
 function review(root,api){
-  let state=createReview(),sawFailure=false;
+  let state=createReview(),sawFailure=false,probeValue='10',probeResult=null;
   function draw(){
     preserveFocus(root,heading('A green check is evidence of something specific.','The AI proposal tests only the middle of the range. Run it, add the missing boundaries, inspect the failure, and repair the validator. CI and review must refer to the current revision.')+
-      lab('Inspect the checks, then the result',evidenceCards(state)+`<div class="terminal" data-state="ci-log">${checksOutput(state)}</div><div class="lab-actions">${button('run-ci','Run example CI','primary')}${button('add-boundaries','Add the boundary cases','secondary',state.boundaries)}${button('fix-validator','Fix the inclusive upper boundary','secondary',!sawFailure||state.inclusive)}${button('approve-revision','Review this revision','secondary',!reviewReady(state))}</div><p class="storage-note">These synchronous example checks run on the small teaching predicate. They do not launch a real GitHub Actions runner.</p>`)+
+      lab('Inspect the checks, then the result',evidenceCards(state)+`<form class="input-experiment" id="probe-form"><label for="probe-count">Try a sample count<input id="probe-count" type="number" step="any" required value="${escape(probeValue)}"></label><button class="button secondary" type="submit">Test this input</button></form><p data-state="probe-result" class="experiment-status">${probeResult===null?'Expected contract: accept integers 1 through 10, inclusive.':`For ${probeValue}: expected ${probeResult.expected?'accept':'reject'}, proposal r${probeResult.revision} ${probeResult.actual?'accepts':'rejects'}. ${probeResult.expected===probeResult.actual?'This case agrees.':'Mismatch found.'}`}</p><div class="terminal" data-state="ci-log">${checksOutput(state)}</div><div class="lab-actions">${button('run-ci','Run example CI','primary')}${button('add-boundaries','Add the boundary cases','secondary',state.boundaries)}${button('fix-validator','Fix the inclusive upper boundary','secondary',!sawFailure||state.inclusive)}${button('approve-revision','Review this revision','secondary',!reviewReady(state))}</div><p class="storage-note">These synchronous example checks run on the small teaching predicate. They do not launch a real GitHub Actions runner.</p>`)+
       '<section class="lesson-card"><h2>AI changes the pace, not the ownership.</h2><p>Use AI to inspect a failure, propose a bounded fix, or explain an unfamiliar file. Preserve human acceptance criteria and independent tests. A review suggestion, confident explanation, or passing narrow test is not proof of the full behavior.</p></section>');
+    root.querySelector('#probe-form').onsubmit=event=>{event.preventDefault();const input=root.querySelector('#probe-count');if(!input.reportValidity())return;probeValue=input.value;const value=Number(probeValue);probeResult={revision:state.revision,actual:acceptsCount(value,state.inclusive),expected:acceptsCount(value,true)};draw();api.feedback(probeResult.expected===probeResult.actual?'This input agrees with the contract. One example does not cover the whole range.':'This input exposes a mismatch. Add independent boundary checks before accepting the patch.',probeResult.expected===probeResult.actual?'info':'error');};
     for(const [id,action] of [['run-ci','ci'],['add-boundaries','boundaries'],['fix-validator','fix'],['approve-revision','approve']])root.querySelector(`#${id}`).onclick=()=>{
       const result=reviewAction(state,action);state=result.state;
       if(action==='ci'&&state.boundaries&&!state.ci.ok)sawFailure=true;
@@ -65,7 +66,7 @@ function review(root,api){
       else api.feedback(action==='approve'?'The current proposal is reviewed with matching check evidence.':action==='boundaries'?'The new tests changed the revision. Any earlier green result is now old evidence.':'The validator now accepts 10. Run the checks again; an edit does not update the old CI result.','info');
       if(state.reviewed===state.revision&&sawFailure)api.complete();
     };
-    root.querySelector('#reset-lab').onclick=()=>{state=createReview();sawFailure=false;draw();api.feedback('The original weak check and exclusive upper boundary are restored.','info');};
+    root.querySelector('#reset-lab').onclick=()=>{state=createReview();sawFailure=false;probeValue='10';probeResult=null;draw();api.feedback('The original weak check and exclusive upper boundary are restored.','info');};
   }
   draw();
 }

@@ -1,3 +1,4 @@
+import {roles} from './roles.mjs';
 import {button,lab,heading,question,bindQuiz,preserveFocus,reflection,escape} from '../../learning/ui.mjs';
 import {createPipeline,transition,status,compatible} from './model.mjs';
 
@@ -10,20 +11,6 @@ export function mount(chapter,root,api) {
   return boot(root,api);
 }
 
-function roles(root,api) {
-  let focus='ps',explored=new Set();
-  function draw() {
-    preserveFocus(root,heading('One device. Two kinds of work.','With STM32, you are used to a CPU executing your compiled program. Zynq adds programmable logic: circuitry configured for a different kind of job.')+
-      lab('PS ↔ PL',`<div class="role-map"><div class="role-box"><strong>PS</strong><h3>Processing system</h3><p>Arm CPU cores run your application. Existing PS peripherals provide interfaces such as UART.</p></div><span class="role-bridge" aria-label="connected">↔</span><div class="role-box pl"><strong>PL</strong><h3>Programmable logic</h3><p>Configurable circuitry implements hardware. A PL peripheral can expose registers for the PS to access.</p></div></div><div class="lab-actions">${button('focus-ps','Follow a C instruction',focus==='ps'?'primary':'secondary')}${button('focus-pl','Follow a GPIO hardware change',focus==='pl'?'primary':'secondary')}</div><div class="terminal" data-state="role-path" style="margin-top:18px">${focus==='ps'?'Application C → compile & link → ELF → PS memory\nThe CPU executes instructions.':'Hardware design → implement → bitstream → PL configuration\nThe configured circuit behaves as hardware.'}</div><p class="storage-note">A simple PS-only design can work without a PL bitstream. Here the PL example is a separate, illustrative GPIO circuit.</p>`)+
-      question('roles','You add a driver call in C. Does that create the missing GPIO circuit in PL?',['Yes. The compiler turns this driver call into the PL circuit.','No. The driver uses an interface that the hardware design must provide.','Only if the C source file is placed in a folder named PL.'])+
-      '<div class="callout"><strong>Bridge from STM32.</strong> HAL drivers and board-support code help software interact with hardware. They overlap in purpose but are not interchangeable names. On Zynq, the software platform and its drivers must correspond to the hardware design.</div>');
-    root.querySelector('#focus-ps').onclick=()=>{focus='ps';explored.add('ps');draw();api.feedback('The ELF contains the application program for the CPU. It is not a PL configuration.','info');};
-    root.querySelector('#focus-pl').onclick=()=>{focus='pl';explored.add('pl');draw();api.feedback('The bitstream configures programmable logic. A driver does not manufacture that circuit.','info');};
-    bindQuiz(root,'roles',1,['An ordinary driver call is compiled as CPU software. A hardware design and its configuration are separate.','Exactly. Software can use a register interface once the required hardware exists and is configured.','A folder name changes neither the target processor nor the kind of artifact produced.'],api,ok=>{if(ok&&explored.size===2)api.complete();else if(ok)api.feedback('Correct. Follow both paths once to compare their artifacts, then confirm the answer.','info');});
-    root.querySelector('#reset-lab').onclick=()=>{focus='ps';explored.clear();draw();api.feedback('Both paths are ready to explore again.','info');};
-  }
-  draw();
-}
 
 const artifacts=[
   {id:'source',name:'main.c',kind:'Source',path:'app/src/main.c',producer:'You and your editor',consumer:'Compiler and application build',edit:'Edit the application here.',explanation:'This is application logic. Changing a string does not itself change the hardware configuration.'},

@@ -5,7 +5,7 @@
       "repository",
       "repo"
     ],
-    "definition": "A project’s versioned files and Git history. A local repository includes Git’s management data in .git/.",
+    "definition": "A project\u2019s versioned files and Git history. A local repository includes Git\u2019s management data in .git/.",
     "example": "The diagnostics repository records its source, tests, and deliberate checkpoints."
   },
   "clone": {
@@ -14,7 +14,7 @@
       "clone"
     ],
     "definition": "A local copy of a repository with its own working files and Git data. Another clone does not share your uncommitted edits.",
-    "example": "Your laptop and a teammate’s laptop can hold different local states."
+    "example": "Your laptop and a teammate\u2019s laptop can hold different local states."
   },
   "working-tree": {
     "title": "Working tree",
@@ -42,7 +42,7 @@
       "staging",
       "index"
     ],
-    "definition": "Preparing content for the next commit. Git’s index holds the selected snapshot, rather than continuously following your editor.",
+    "definition": "Preparing content for the next commit. Git\u2019s index holds the selected snapshot, rather than continuously following your editor.",
     "example": "A second edit needs another deliberate add to replace the staged version."
   },
   "commit": {
@@ -92,7 +92,7 @@
       "remote-tracking",
       "origin/main"
     ],
-    "definition": "Your clone’s local record of a branch on a remote, updated by operations such as fetch.",
+    "definition": "Your clone\u2019s local record of a branch on a remote, updated by operations such as fetch.",
     "example": "origin/main is not a live view that automatically changes your working files."
   },
   "merge": {
@@ -145,7 +145,8 @@
       "PR"
     ],
     "definition": "A GitHub collaboration record proposing changes from one branch into another, with differences, discussion, review, and checks.",
-    "example": "Opening a PR does not by itself merge your branch."
+    "example": "Opening a PR does not by itself merge your branch.",
+    "expansion": "Pull Request"
   },
   "git-vs-github": {
     "title": "Git and GitHub",
@@ -179,7 +180,8 @@
       "continuous integration"
     ],
     "definition": "Automated checks run when a project changes. The result belongs to the revision that was actually tested.",
-    "example": "A green check on an older commit does not verify your new patch."
+    "example": "A green check on an older commit does not verify your new patch.",
+    "expansion": "Continuous Integration"
   },
   "workflow": {
     "title": "GitHub Actions workflow",
@@ -227,7 +229,8 @@
       "PS"
     ],
     "definition": "The Zynq subsystem containing CPU cores and fixed peripherals. Its CPU executes your application program.",
-    "example": "A UART application can use PS peripherals without adding a PL circuit."
+    "example": "A UART application can use PS peripherals without adding a PL circuit.",
+    "expansion": "Processing System"
   },
   "pl": {
     "title": "Programmable logic",
@@ -235,7 +238,8 @@
       "PL"
     ],
     "definition": "Configurable hardware circuitry in the Zynq device. Its configuration is distinct from CPU application code.",
-    "example": "An AXI GPIO peripheral in PL needs a corresponding hardware design and configuration."
+    "example": "An AXI GPIO peripheral in PL needs a corresponding hardware design and configuration.",
+    "expansion": "Programmable Logic"
   },
   "driver": {
     "title": "Driver",
@@ -247,13 +251,14 @@
     "example": "A GPIO driver must correspond to an interface present in the selected design."
   },
   "xsa": {
-    "title": "XSA hardware handoff",
+    "title": "XSA \u00b7 Xilinx Shell Archive",
     "match": [
       "XSA",
       "design.xsa"
     ],
-    "definition": "Vivado’s exported hardware information used to create or update software support. Bitstream inclusion depends on export choices.",
-    "example": "A v2 interface needs the v2 handoff rather than a renamed old file."
+    "definition": "Vivado\u2019s exported hardware information used to create or update software support. Bitstream inclusion depends on export choices.",
+    "example": "A v2 interface needs the v2 handoff rather than a renamed old file.",
+    "expansion": "Xilinx Shell Archive"
   },
   "platform": {
     "title": "Classic platform",
@@ -277,16 +282,18 @@
       "BSP"
     ],
     "definition": "Hardware- and environment-specific support information, libraries, and drivers used by the software. It is not a complete application.",
-    "example": "A BSP built from the old hardware description can preserve old address assumptions."
+    "example": "A BSP built from the old hardware description can preserve old address assumptions.",
+    "expansion": "Board Support Package"
   },
   "elf": {
-    "title": "ELF application artifact",
+    "title": "ELF \u00b7 Executable and Linkable Format",
     "match": [
       "ELF",
       "app.elf"
     ],
     "definition": "A compiled and linked program file on the host, consumed by loading or boot tooling. It is distinct from the contents already in CPU memory.",
-    "example": "Rebuilding app.elf does not automatically replace the program running on the board."
+    "example": "Rebuilding app.elf does not automatically replace the program running on the board.",
+    "expansion": "Executable and Linkable Format"
   },
   "bitstream": {
     "title": "Bitstream",
@@ -295,7 +302,7 @@
       "design.bit"
     ],
     "definition": "A hardware configuration artifact used to program PL. It is different from the CPU application ELF.",
-    "example": "A software-only string change leaves the example’s hardware bitstream unchanged."
+    "example": "A software-only string change leaves the example\u2019s hardware bitstream unchanged."
   },
   "linker-script": {
     "title": "Linker script",
@@ -312,7 +319,8 @@
       "JTAG"
     ],
     "definition": "A debug/programming access path used here to illustrate loading artifacts into the target. A debug run does not establish power-on boot behavior.",
-    "example": "A JTAG-loaded v2 program can disappear after power-on loads an older boot setup."
+    "example": "A JTAG-loaded v2 program can disappear after power-on loads an older boot setup.",
+    "expansion": "Joint Test Action Group"
   },
   "boot": {
     "title": "Boot setup",
@@ -355,7 +363,7 @@
       "observations",
       "evidence"
     ],
-    "definition": "Observed facts used to locate the first failing layer before choosing a repair. The observation’s scope and version matter.",
+    "definition": "Observed facts used to locate the first failing layer before choosing a repair. The observation\u2019s scope and version matter.",
     "example": "Old output after a power cycle suggests checking boot contents rather than randomly rebuilding everything."
   },
   "vcs": {
@@ -365,14 +373,15 @@
       "VCS"
     ],
     "definition": "A system for recording and comparing project versions so changes can be inspected, recovered, and combined. Git is a distributed version-control system.",
-    "example": "Record a known diagnostics baseline before experimenting, then inspect the difference from it."
+    "example": "Record a known diagnostics baseline before experimenting, then inspect the difference from it.",
+    "expansion": "Version Control System"
   },
   "vivado": {
     "title": "Vivado",
     "match": [
       "Vivado"
     ],
-    "definition": "AMD’s hardware-design tools used here to describe, implement, and export the Zynq hardware design. They produce different artifacts from the CPU application build.",
+    "definition": "AMD\u2019s hardware-design tools used here to describe, implement, and export the Zynq hardware design. They produce different artifacts from the CPU application build.",
     "example": "A hardware-interface change produces a new handoff and, when PL changes, an appropriate bitstream."
   },
   "vitis": {
@@ -381,7 +390,79 @@
       "Vitis",
       "Classic"
     ],
-    "definition": "The embedded software development environment used for this curriculum’s platform, standalone domain, and application concepts. Classic and Unified IDE flows must not be mixed.",
+    "definition": "The embedded software development environment used for this curriculum\u2019s platform, standalone domain, and application concepts. Classic and Unified IDE flows must not be mixed.",
     "example": "Classic 2023.2 uses the Classic launch option; the curriculum does not claim a tested physical setup."
+  },
+  "cpu": {
+    "title": "Central Processing Unit",
+    "match": [
+      "CPU"
+    ],
+    "expansion": "Central Processing Unit",
+    "definition": "Processor hardware that executes program instructions.",
+    "example": "The PS CPU executes the loaded application."
+  },
+  "gpio": {
+    "title": "General Purpose Input/Output",
+    "match": [
+      "GPIO"
+    ],
+    "expansion": "General Purpose Input/Output",
+    "definition": "A configurable digital input/output interface.",
+    "example": "A PL GPIO interface requires configured hardware."
+  },
+  "uart": {
+    "title": "Universal Asynchronous Receiver/Transmitter",
+    "match": [
+      "UART"
+    ],
+    "expansion": "Universal Asynchronous Receiver/Transmitter",
+    "definition": "A serial communication peripheral.",
+    "example": "The example application can communicate through a PS UART."
+  },
+  "hal": {
+    "title": "Hardware Abstraction Layer",
+    "match": [
+      "HAL"
+    ],
+    "expansion": "Hardware Abstraction Layer",
+    "definition": "Software interfaces that abstract device-specific hardware access.",
+    "example": "STM32 HAL and Zynq support libraries have related purposes but different interfaces."
+  },
+  "ide": {
+    "title": "Integrated Development Environment",
+    "match": [
+      "IDE"
+    ],
+    "expansion": "Integrated Development Environment",
+    "definition": "An application combining code editing, builds, and debugging tools.",
+    "example": "The project tree is an IDE view, not the whole disk."
+  },
+  "ai": {
+    "title": "Artificial Intelligence",
+    "match": [
+      "AI"
+    ],
+    "expansion": "Artificial Intelligence",
+    "definition": "Software assistance that can propose code and explanations; its output needs independent checks.",
+    "example": "Review the proposed sample-count validator against the inclusive range."
+  },
+  "axi": {
+    "title": "Advanced eXtensible Interface",
+    "match": [
+      "AXI"
+    ],
+    "expansion": "Advanced eXtensible Interface",
+    "definition": "An on-chip interface protocol family used for connections such as PS\u2013PL register access.",
+    "example": "A software write reaches an implemented PL register interface."
+  },
+  "ddr": {
+    "title": "Double Data Rate",
+    "match": [
+      "DDR"
+    ],
+    "expansion": "Double Data Rate",
+    "definition": "A memory signaling technology; here the term identifies a target memory region.",
+    "example": "The linker script selects the program\u2019s target memory placement."
   }
 }

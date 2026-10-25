@@ -1,6 +1,7 @@
 import {clearReflectionDraft,setCheckpointContext,escape} from './ui.mjs';
 import {setTerms,bindTerms} from './terms.mjs';
 import {modulesIn,completedIds} from './curriculum.mjs';
+import {activityKey,resumeKey,lastChapter} from './activity.mjs';
 import {controllerLoaders} from './registry.mjs';
 
 const catalog=JSON.parse(document.getElementById('curriculum-data').textContent);
@@ -12,7 +13,7 @@ const legacyTitles={git:['Locate your workspace','Review & stage','Catch the sna
 const legacyTerms={git:[['clone','working-tree'],['diff','staging'],['staging','commit'],['branch','remote'],['head','revert']],'zynq-7000':[['ps','pl'],['xsa','bsp','elf'],['elf','bitstream'],['platform','bsp'],['jtag','bitstream'],['boot','jtag']]};
 const lessons=module?.lessons || legacyTitles[course].map((title,i)=>({id:`legacy-${i}`,title,controller:course,station:i,terms:legacyTerms[course][i]}));
 const root=document.getElementById('lesson-root');
-const key=module?`studentguide:activity:v2:${module.id}`:`studentguide:activity:v1:${course}`;
+const key=module?activityKey(module.id):`studentguide:activity:v1:${course}`;
 let saved={},storageAvailable=true;
 try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch{storageAvailable=false;}
 let completed=completedIds(saved.completed,lessons);
@@ -24,7 +25,8 @@ bindTerms(root);
 
 function persist(){
   const record=module?[...completed]:[...completed].map(id=>lessons.findIndex(l=>l.id===id));
-  try{localStorage.setItem(key,JSON.stringify({completed:record,reflection:reflectionText}));}catch{storageAvailable=false;}
+  try{localStorage.setItem(key,JSON.stringify({completed:record,reflection:reflectionText,lastLesson:lessons[chapter].id}));}catch{storageAvailable=false;}
+  if(module)try{localStorage.setItem(resumeKey(module.topicId),JSON.stringify({moduleId:module.id,lessonId:lessons[chapter].id}));}catch{storageAvailable=false;}
 }
 function navigation(){
   document.getElementById('chapter-nav').innerHTML=lessons.map((lesson,i)=>`<a href="#chapter-${i+1}" class="chapter-link ${completed.has(lesson.id)?'completed':''}" ${i===chapter?'aria-current="step"':''}><span class="chapter-index">${completed.has(lesson.id)?'✓':String(i+1).padStart(2,'0')}</span><span>${escape(lesson.title)}${completed.has(lesson.id)?'<span class="sr-only"> (practiced)</span>':''}</span></a>`).join('');
@@ -61,11 +63,11 @@ const api={
 function showChapter(focus=false){
   feedback.hidden=true;feedback.textContent='';
   const match=location.hash.match(/^#chapter-(\d+)$/);
-  chapter=match?Math.min(lessons.length-1,Math.max(0,Number(match[1])-1)):0;
+  chapter=match?Math.min(lessons.length-1,Math.max(0,Number(match[1])-1)):(module?lastChapter(module,saved):0);
   const lesson=lessons[chapter];
   setCheckpointContext(lesson.context||'');setTerms(definitions,lesson.terms||[]);
   loaded.get(lesson.controller).mount(lesson.station,root,api);
-  navigation();
+  persist();navigation();
   if(focus)document.getElementById('lesson-title')?.focus({preventScroll:false});
 }
 document.getElementById('previous-chapter').onclick=()=>{if(chapter>0)location.hash=`chapter-${chapter}`;};
@@ -78,7 +80,7 @@ document.getElementById('reset-course').onclick=()=>{
   dialog.addEventListener('close',()=>{dialog.remove();document.getElementById('reset-course').focus();});
   dialog.querySelector('#cancel-reset').onclick=()=>dialog.close();
   dialog.querySelector('#confirm-reset').onclick=()=>{
-    completed=new Set();reflectionText='';const draft=root.querySelector('#reflection');if(draft)draft.value='';
+    completed=new Set();reflectionText='';chapter=0;saved={};const draft=root.querySelector('#reflection');if(draft)draft.value='';
     clearReflectionDraft(root);persist();dialog.close();
     if(location.hash!=='#chapter-1')location.hash='#chapter-1';else showChapter(true);
   };

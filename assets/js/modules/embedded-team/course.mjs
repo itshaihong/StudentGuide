@@ -1,3 +1,4 @@
+import {bindDrag} from '../../learning/drag.mjs';
 import {heading,lab,button,preserveFocus,reflection,escape} from '../../learning/ui.mjs';
 import {projectItems,createContract,contractAction,diagnosticCases,createDiagnosis,inspectDiagnosis,repairDiagnosis,createDelivery,deliveryAction} from './model.mjs';
 
@@ -13,12 +14,14 @@ function sources(root,api){
   function draw(){
     const item=projectItems[current];
     preserveFocus(root,heading('Share the inputs, not a mysterious folder.','This team keeps maintained source and settings in Git. It supplies release artifacts with their revisions, regenerates local support output, and records board state separately. Classify the files under that explicit policy.')+
-      lab('Prepare a rebuildable source set',`<p>Item ${current+1} of ${projectItems.length}</p><div class="artifact-inspection" data-state="source-item"><code>${escape(item.path)}</code><p>${classified.has(current)?item.reason:'Which responsibility does this item have in the handoff?'}</p></div><div class="lab-actions">${choices.map(([id,label])=>button(`classify-${id}`,label)).join('')}</div><div class="lab-actions">${button('source-previous','← Previous item','secondary',current===0)}${button('source-next','Next item →','primary',!classified.has(current)||current===projectItems.length-1)}</div><p class="storage-note">${classified.size} of ${projectItems.length} responsibilities identified. This policy does not claim that all generated files are forbidden in every Git project.</p>`)+
+      lab('Prepare a rebuildable source set',`<p>Item ${current+1} of ${projectItems.length}</p><div class="artifact-inspection" data-drag-id="current" data-state="source-item"><code>${escape(item.path)}</code><p>${classified.has(current)?item.reason:'Drag this item to a responsibility below, or select a responsibility button.'}</p></div><div class="lab-actions">${choices.map(([id,label])=>`<button type="button" class="button secondary drop-zone" id="classify-${id}" data-drop-id="${id}">${label}</button>`).join('')}</div><div class="lab-actions">${button('source-previous','← Previous item','secondary',current===0)}${button('source-next','Next item →','primary',!classified.has(current)||current===projectItems.length-1)}</div><p class="storage-note">${classified.size} of ${projectItems.length} responsibilities identified. This policy does not claim that all generated files are forbidden in every Git project.</p>`)+
       '<section class="lesson-card"><h2>A project entry is not all its inputs.</h2><p>Keep the maintained design recipe, constraints, relevant configuration, and application source. Document how to generate the platform support. A teammate should not depend on your machine’s cache or a hand-edited generated header.</p></section>');
-    for(const [id]of choices)root.querySelector(`#classify-${id}`).onclick=()=>{
+    function classify(id){
       if(id===item.kind){classified.add(current);draw();api.feedback(item.reason);if(classified.size===projectItems.length)api.complete();}
       else api.feedback(id==='git'?'Ask whether this is maintained input, produced output, or target state. The project’s policy assigns different responsibilities to each.':`Under this project policy, this item is ${choices.find(([key])=>key===item.kind)[1].toLowerCase()}. ${item.reason}`,'error');
     };
+    for(const [id]of choices)root.querySelector(`#classify-${id}`).onclick=()=>classify(id);
+    bindDrag(root,(_,id)=>classify(id));
     root.querySelector('#source-previous').onclick=()=>{current--;draw();};
     root.querySelector('#source-next').onclick=()=>{current++;draw();};
     root.querySelector('#reset-lab').onclick=()=>{current=0;classified.clear();draw();api.feedback('The source ownership decisions reset.','info');};

@@ -7,7 +7,7 @@
   <title>{{ page.title | escape }} · StudentGuide</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f514b'/%3E%3Ctext x='11' y='42' font-family='monospace' font-size='30' fill='white'%3Esg%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="{{ '/assets/css/learning/site.css' | relative_url }}">
-  {% if page.course %}<script type="module" src="{{ '/assets/js/learning/course.mjs' | relative_url }}"></script>{% endif %}
+  {% if page.course %}<script type="module" src="{{ '/assets/js/learning/course.mjs' | relative_url }}"></script>{% elsif page.topic %}<script type="module" src="{{ '/assets/js/learning/progress.mjs' | relative_url }}"></script>{% endif %}
   <script type="application/json" id="curriculum-data">{{ site.data.curriculum | jsonify }}</script>
   <script type="application/json" id="terms-data">{{ site.data.terms | jsonify }}</script>
 </head>

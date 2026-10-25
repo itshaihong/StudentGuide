@@ -2,18 +2,20 @@
 <section class="topic-intro">
   <a class="back-link" href="{{ '/modules/' | relative_url }}">← All topics</a>
   <p class="topic-kicker">Learning path · {{ topic.modules.size }} modules</p>
-  <h1>{{ topic.title }}</h1>
-  <p>{{ topic.description }}</p>
+  <h1>{{ topic.title }}</h1><p>{{ topic.description }}</p>
   <p class="prerequisite"><strong>Start with:</strong> {{ topic.prerequisite }}</p>
+  <p id="topic-progress" class="storage-note">Choose a chapter below. Practice is saved in this browser.</p>
+  <div id="topic-resume" class="resume-panel" hidden><a class="button primary" href="#">Continue learning →</a><p>Return to your last chapter. Experiments restart; your practice marks and saved reflection stay.</p></div>
 </section>
-<section class="module-list" aria-label="Modules in recommended order">
+<section class="module-list" aria-label="Choose a chapter, grouped by module">
   {% for module in topic.modules %}
-  <article class="module-card">
-    <div class="module-order" aria-hidden="true">{{ forloop.index | prepend: '0' }}</div>
-    <div><p class="topic-kicker">Module {{ forloop.index }} · {{ module.lessons.size }} chapters</p><h2><a href="{{ module.url | relative_url }}">{{ module.title }}</a></h2>
-    <p>{{ module.story }}</p><p class="module-outcome"><strong>You’ll be able to:</strong> {{ module.outcome }}</p>
-    {% if module.prerequisites.size > 0 %}<p class="prerequisite">Recommended first: {% for prior in topic.modules %}{% if module.prerequisites contains prior.id %}<a href="{{ prior.url | relative_url }}">{{ prior.title }}</a>{% endif %}{% endfor %}</p>{% endif %}
-    <a class="button primary" href="{{ module.url | relative_url }}">{% if forloop.first %}Start here{% else %}Explore module{% endif %} →</a></div>
+  <article class="module-card chapter-module">
+    <div class="module-heading"><img class="module-cover" src="{{ '/assets/images/modules/' | append: module.id | append: '.png' | relative_url }}" alt="" width="1536" height="1024" loading="lazy"><div><p class="topic-kicker">Module {{ forloop.index }}</p><h2>{{ module.title }}</h2><p>{{ module.outcome }}</p></div></div>
+    {% if module.prerequisites.size > 0 %}<p class="prerequisite">Recommended first: {% for prior in topic.modules %}{% if module.prerequisites contains prior.id %}<a href="#module-{{ prior.id }}">{{ prior.title }}</a>{% endif %}{% endfor %}</p>{% endif %}
+    <p id="module-{{ module.id }}" data-module-progress="{{ module.id }}" class="module-progress">{{ module.lessons.size }} chapters · choose where to begin</p>
+    <ol class="chapter-selection">{% for lesson in module.lessons %}<li><a href="{{ module.url | relative_url }}#chapter-{{ forloop.index }}" data-lesson-id="{{ lesson.id }}"><span class="chapter-number">{{ forloop.index | prepend: '0' }}</span><span>{{ lesson.title }}</span><span class="chapter-status">Not practiced</span></a></li>{% endfor %}</ol>
+    <details class="module-brief"><summary>The project you’ll work on</summary><p>{{ module.story }}</p></details>
   </article>
   {% endfor %}
 </section>
+<p class="storage-note">Practice marks record activity, not mastery. Cover illustrations are conceptual; lesson diagrams explain the actual relationships.</p>

@@ -9,6 +9,8 @@ A **topic** is a broad learning path. A **module** is a coherent engineering tas
 within that topic. A **chapter** is one meaningful step toward the module's outcome.
 Use a few well-connected modules, with only the chapters needed for essential skills.
 The topic → module → chapter hierarchy must be visible in navigation and data.
+Clicking a topic opens chapter selection grouped by module. The page shows completion
+state and offers resume at the last visited chapter, using browser-local storage.
 
 Begin with prerequisites. A learner should manage their own work before integrating
 someone else's work, and understand Git's local state before using GitHub's review
@@ -41,6 +43,9 @@ Do not animate unrelated regions or add continuous decorative movement.
 Honor reduced-motion preferences with static emphasis and readable feedback. Preserve
 keyboard focus through redraws. Reset must restore the stated initial conditions.
 Incorrect actions should expose a useful consequence and an achievable repair.
+Use a richer interaction vocabulary when it fits the task: drag/drop for staging and
+ordering, editable values for experiments, and direct inspection rather than only
+answer buttons. Provide equivalent click, keyboard, and touch operations.
 
 ## Visual direction
 
@@ -52,6 +57,9 @@ Retain the user's earlier corrections: a centered reading column, comfortable te
 generous space, concise navigation, and a quiet footer source link. Avoid small dense
 labels, a persistent sidebar, ornamental marketing copy, and distracting chrome.
 Fit the phone layout by simplifying or stacking, never by shrinking the text.
+Use relevant original illustrations to make the project worlds inviting and impressive.
+Keep those illustrations separate from precise teaching diagrams and actual verification
+evidence. Visuals must not introduce misleading hardware details or unrelated themes.
 
 ## Organization and evidence
 
@@ -67,3 +75,12 @@ Do not create dated copies of the memory or leave obsolete plans presented as cu
 Preserve existing public links. Keep English-only static delivery on GitHub Pages.
 Respect published bot restrictions when inspecting the academy. Borrow interaction
 principles; create original explanations, exercises, diagrams, and code.
+
+## Diagram accuracy and abbreviations
+
+Show full names beside abbreviations at first use; an optional explanation control
+alone is insufficient. In particular, PS means Processing System and PL means
+Programmable Logic. Both are hardware. The PS CPU executes software instructions;
+a bitstream configures the PL to implement digital circuits. Avoid a diagram that
+opposes “software” to “circuitry” as if PS were software itself. Use explicit build
+paths and an observable software-to-register-to-logic example when teaching the link.
