@@ -25,6 +25,7 @@ exclude:
   - templates/
   - exercises/
   - scripts/
+  - tests/
   - Gemfile
   - Gemfile.lock
   - vendor/

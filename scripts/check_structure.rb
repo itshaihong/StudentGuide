@@ -16,7 +16,7 @@ end.parse!
 
 errors = []
 config = YAML.safe_load(File.read(File.join(root, '_config.yml')))
-internal = %w[docs templates exercises scripts]
+internal = %w[docs templates exercises scripts tests]
 excluded = Array(config['exclude']).map { |path| path.sub(%r{/$}, '') }
 (internal + %w[AGENTS.md README.md Gemfile Gemfile.lock]).each do |path|
   errors << "Missing site exclusion: #{path}" unless excluded.include?(path)

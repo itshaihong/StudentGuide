@@ -1,8 +1,8 @@
 # Working in StudentGuide
 
 Read `README.md`, `docs/architecture.md`, and the relevant module brief before making changes.
-The current scope is a static learning site with two initial modules: Git workflow
-and STM32 to Zynq 7000. The roadmap distinguishes plans from implemented behavior.
+The current scope is an English-only static learning site with two interactive modules:
+Git workflow and STM32 to Zynq 7000. The roadmap distinguishes plans from implemented behavior.
 
 ## Content and evidence
 
@@ -32,7 +32,7 @@ and STM32 to Zynq 7000. The roadmap distinguishes plans from implemented behavio
 
 ## Validation
 
-Run `ruby scripts/check_structure.rb`. When the Ruby dependencies are available, also run
+Run `ruby scripts/check_structure.rb` and `node --test tests/*.test.mjs`. When the Ruby dependencies are available, also run
 `bundle exec jekyll build --trace` and `ruby scripts/check_structure.rb --site _site`.
 For browser interactions, check the lesson's acceptance criteria and the checklist
 in `docs/authoring.md`. Report validation limits explicitly.

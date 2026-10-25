@@ -18,10 +18,34 @@
     "board_state": "Separate illustrative PS memory, PL configuration, and boot storage views"
   },
   "steps": [
-    {"id": "application", "prediction": "What follows a string or delay change?", "action": "Change only the application in the simplified example.", "expected_change": "Highlight application build and new ELF, followed by a distinct load or boot update when relevant.", "feedback": "Changing application text alone does not imply rebuilding the hardware design."},
-    {"id": "interface", "prediction": "What can become stale after changing a hardware peripheral or address configuration?", "action": "Apply an illustrative hardware-interface change.", "expected_change": "Highlight hardware handoff, platform or BSP updates as applicable, and dependent application rebuilds.", "feedback": "Rebuilding application source against stale platform information may preserve the mismatch."},
-    {"id": "logic", "prediction": "What must match when PL logic changes?", "action": "Apply an illustrative PL change and inspect its consumers.", "expected_change": "Highlight the appropriate hardware generation and loaded bitstream, and review whether software-visible information also changes.", "feedback": "A new host file is not evidence that the board has loaded the matching configuration."},
-    {"id": "variation", "prediction": "Does a successful JTAG run prove power-on boot?", "action": "Compare the host ELF, loaded memory, and boot-storage views.", "expected_change": "Keep execution state and boot setup distinct.", "feedback": "Boot contents and storage need a board-specific verified example."}
+    {
+      "id": "application",
+      "prediction": "What follows a string or delay change?",
+      "action": "Change only the application in the simplified example.",
+      "expected_change": "Highlight application build and new ELF, followed by a distinct load or boot update when relevant.",
+      "feedback": "Changing application text alone does not imply rebuilding the hardware design."
+    },
+    {
+      "id": "interface",
+      "prediction": "What can become stale after changing a hardware peripheral or address configuration?",
+      "action": "Apply an illustrative hardware-interface change.",
+      "expected_change": "Highlight hardware handoff, platform or BSP updates as applicable, and dependent application rebuilds.",
+      "feedback": "Rebuilding application source against stale platform information may preserve the mismatch."
+    },
+    {
+      "id": "logic",
+      "prediction": "What must match when PL logic changes?",
+      "action": "Apply an illustrative PL change and inspect its consumers.",
+      "expected_change": "Highlight the appropriate hardware generation and loaded bitstream, and review whether software-visible information also changes.",
+      "feedback": "A new host file is not evidence that the board has loaded the matching configuration."
+    },
+    {
+      "id": "variation",
+      "prediction": "Does a successful JTAG run prove power-on boot?",
+      "action": "Compare the host ELF, loaded memory, and boot-storage views.",
+      "expected_change": "Keep execution state and boot setup distinct.",
+      "feedback": "Boot contents and storage need a board-specific verified example."
+    }
   ],
   "reset": "Restore the matching illustrative versions and clear all dependency highlights and attempt feedback.",
   "evidence": [
@@ -29,5 +53,9 @@
     "Identify a stale handoff or platform in a fresh variation without hints.",
     "Distinguish host ELF, loaded memory, PL configuration, and power-on boot contents."
   ],
-  "open_questions": ["Teaching language", "Actual Zynq 7000 board", "Learner tool access", "Verified example project and screenshots"]
+  "open_questions": [
+    "Actual Zynq 7000 board",
+    "Learner tool access",
+    "Verified example project and screenshots"
+  ]
 }

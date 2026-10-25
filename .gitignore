@@ -15,6 +15,7 @@ Thumbs.db
 /coverage/
 /playwright-report/
 /test-results/
+/output/
 
 # Local configuration
 .env

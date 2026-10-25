@@ -2,10 +2,15 @@
 
 ## Current state
 
-The repository has been organized for two initial modules. Existing guides are grouped
-under Reference guides, and the new module pages publish outlines only. Authoring
-templates, scenario specifications, and validation tools are available. Interactive
-lessons, learner testing, progress persistence, and hardware labs remain unimplemented.
+The English home page and two interactive labs are implemented. Git has five chapters;
+Zynq has six chapters covering roles, files, application changes, hardware handoff,
+loaded artifacts, and boot. Both use original state models, explanations, retry/reset,
+activity records stored in the browser, and an ungraded reflection. Thirteen automated
+checks cover state behavior, including a real-Git snapshot comparison. Browser and
+build verification results are recorded separately in `verification.md`.
+
+The original guides and image addresses remain reachable. Main and its GitHub Pages
+configuration are unchanged; all new work is on `codex/interactive-learning`.
 
 The supplied [research proposal](research/README.md) informs this scope. Its prior
 website observations and reference checks have not been repeated in this reorganization.
@@ -22,9 +27,10 @@ Each lesson should use this sequence: task, necessary concept, prediction, one a
 visible state change, explanation, and an independent variation. Activities and
 understanding must be recorded separately; an unobserved skill remains unknown.
 
-## Phase 1 Plan the two pilots
+## Phase 1 Two pilot scenarios — implemented
 
-Write a lesson from `templates/lesson.md` and review it alongside its scenario JSON.
+The scenario JSON files document the teaching assumptions behind the two labs. Use
+`templates/lesson.md` and the authoring checks for future additions.
 
 | Module | First pilot | Evidence required before moving on |
 | --- | --- | --- |
@@ -36,9 +42,9 @@ sharing, and recovery. The Zynq roadmap has seven: STM32 bridge, PS/PL, hardware
 handoff, file locations, minimal PS example, PL connection, and build/run/boot.
 See the public module outlines for the observable outcome of each unit.
 
-## Phase 2 Build two small browser simulations
+## Phase 2 Two browser simulations — implemented
 
-Implement the two reviewed pilots in the existing site. Show intermediate states,
+The two pilots run inside the existing Jekyll site. Future refinement should Show intermediate states,
 provide reasons for incorrect choices, allow retry and reset, and use original visual
 material. Use finite-state models with their assumptions visible. Check whether a
 beginner can explain a new variation without hints before increasing scope.
@@ -62,7 +68,7 @@ PetaLinux, DMA tuning, and a complete software-engineering course.
 
 | Decision | Current position | Needed before |
 | --- | --- | --- |
-| Teaching language | Existing English site content retained; Chinese source preserved | Writing the first complete lessons |
+| Teaching language | English only, as requested; imported Chinese research remains local | Decided |
 | Zynq board | Unselected | Pinouts, addresses, screenshots, practical labs, and boot instructions |
 | Learner tool access | Unknown | Requiring local installations or physical board work |
 

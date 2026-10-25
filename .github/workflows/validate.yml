@@ -19,7 +19,15 @@ jobs:
           bundler-cache: true
       - name: Check source structure
         run: ruby scripts/check_structure.rb
+      - name: Check learning state models
+        run: node --test tests/*.test.mjs
       - name: Build site
         run: bundle exec jekyll build --trace
       - name: Check built pages and exclusions
         run: ruby scripts/check_structure.rb --site _site
+      - name: Save the checked site for preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: studentguide-site
+          path: _site/
+          include-hidden-files: true

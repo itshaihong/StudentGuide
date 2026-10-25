@@ -26,16 +26,18 @@ searchable transcription. `docs/roadmap.md` records adopted scope and open decis
 scenario specifications and, when needed, synthetic files used to construct a lesson.
 These directories are excluded from Jekyll output, including the original Word file.
 
-Scenario JSON files are **design specifications**, not an implemented browser runtime
-or a complete Git/Vitis model. They record the task, initial state, intended transitions,
+Scenario JSON files are **design specifications** accompanying the implemented browser runtime
+; neither is a complete Git/Vitis model. They record the task, initial state, intended transitions,
 feedback, reset behavior, and evidence to collect. Do not load an internal specification
 through a public URL: it is intentionally absent from the site build.
 
-## Where implementation will go
+## Learning implementation
 
-Create these paths when the first lesson needs them:
+The custom `learning` layout serves the home, catalog, and course pages. The original
+Just the Docs layout continues serving reference guides. The implemented paths and
+reserved asset locations are:
 
-| Future path | Responsibility |
+| Path | Responsibility |
 | --- | --- |
 | `_includes/learning/` | Reusable semantic HTML for lesson controls and state displays |
 | `assets/js/learning/` | Shared browser behavior such as reset and feedback |
@@ -48,7 +50,7 @@ Do not create a framework or unused asset tree in advance. Keep lesson meaning i
 the lesson and state transitions in the relevant interaction code. Shared components
 should emerge from the two pilots rather than from a speculative general engine.
 
-The first interactions should run entirely in the browser and have deterministic
+The interactions run entirely in the browser and have deterministic
 reset behavior. Git must show working files, staged snapshots, commits, and remote
 state separately. Zynq must distinguish host files, loaded PS memory, PL configuration,
 and board storage. Neither simulation executes arbitrary learner commands.
@@ -71,7 +73,8 @@ specifications, and the exclusion of authoring material. Its optional `--site` c
 also verifies built routes, links, images, and output exclusions. A passing source
 check does not prove that a Jekyll build or browser interaction works.
 
-For implementation, add tests that exercise state transitions and the relevant
+State-model tests are in `tests/`, including an isolated real-Git snapshot check.
+For further implementation, add tests that exercise state transitions and the relevant
 acceptance criteria. Verify actual browser behavior, keyboard use, reset, and mobile
 readability. Hardware steps require separate evidence from the selected board and tools.
 
